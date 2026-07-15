@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,12 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Zabroad — Jobs, Housing, Marketplace & Events",
-    template: "%s · Zabroad",
-  },
+  title: "AbroAI — Get the app",
   description:
-    "Zabroad connects immigrant communities with jobs, housing, marketplace listings, and local events.",
+    "Download AbroAI for Android and iOS — jobs, housing, marketplace, and community for immigrants, in one app.",
 };
 
 export default function RootLayout({
@@ -33,11 +28,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </body>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }
