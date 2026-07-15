@@ -1,8 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f8fb;
+  --foreground: #0f1420;
+
+  /* Brand palette — matches the Zabroad mobile app / marketing identity */
+  --brand-orange: #f4a227;
+  --brand-blue: #3b8bf7;
+  --brand-teal: #28d99e;
+  --brand-red: #e85555;
+  --brand-purple: #7c3aed;
+
+  --navy: #0a0e1a;
+  --navy-2: #121827;
+  --navy-3: #1a2236;
+
+  /* Per-listing-type accents, consistent across the whole app */
+  --type-job: #3b8bf7;
+  --type-housing: #f4a227;
+  --type-market: #28d99e;
+  --type-event: #e85555;
 }
 
 @theme inline {
@@ -10,17 +27,47 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-teal: var(--brand-teal);
+  --color-brand-red: var(--brand-red);
+  --color-brand-purple: var(--brand-purple);
+
+  --color-navy: var(--navy);
+  --color-navy-2: var(--navy-2);
+  --color-navy-3: var(--navy-3);
+
+  --color-type-job: var(--type-job);
+  --color-type-housing: var(--type-housing);
+  --color-type-market: var(--type-market);
+  --color-type-event: var(--type-event);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.brand-gradient-text {
+  background-image: linear-gradient(90deg, var(--brand-orange), var(--brand-blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-gradient-bg {
+  background-image: linear-gradient(90deg, var(--brand-orange), var(--brand-blue));
+}
+
+.card-shadow {
+  box-shadow: 0 1px 2px rgba(15, 20, 32, 0.04), 0 8px 24px -12px rgba(15, 20, 32, 0.12);
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
