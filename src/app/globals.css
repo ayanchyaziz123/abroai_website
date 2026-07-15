@@ -1,49 +1,89 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0e1a;
-  --foreground: #f4f2ff;
-
-  /* Brand palette — matches the AbroAI mobile app */
-  --brand-purple: #7c3aed;
-  --brand-purple-2: #a78bfa;
-  --brand-orange: #f4a227;
-
-  --navy: #0a0e1a;
-  --navy-2: #121827;
-  --navy-3: #1a2236;
-
-  --ink-60: #b7bdd1;
-  --ink-35: #7b839c;
+  --ground: #0b0f1a;
+  --paper: #131a2e;
+  --paper-2: #0e1426;
+  --ink: #f2efe6;
+  --ink-dim: #9aa1b8;
+  --ink-faint: #5c637d;
+  --accent: #7c3aed;
+  --accent-soft: #a78bfa;
+  --stamp: #f4a227;
+  --line: rgba(242, 239, 230, 0.14);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ground: var(--ground);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-dim: var(--ink-dim);
+  --color-ink-faint: var(--ink-faint);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-stamp: var(--stamp);
+  --color-line: var(--line);
 
-  --color-brand-purple: var(--brand-purple);
-  --color-brand-purple-2: var(--brand-purple-2);
-  --color-brand-orange: var(--brand-orange);
-
-  --color-navy: var(--navy);
-  --color-navy-2: var(--navy-2);
-  --color-navy-3: var(--navy-3);
-
-  --color-ink-60: var(--ink-60);
-  --color-ink-35: var(--ink-35);
+  --font-display: var(--font-display-raw);
+  --font-body: var(--font-body-raw);
+  --font-mono: var(--font-mono-raw);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
 }
 
-.brand-gradient-text {
-  background-image: linear-gradient(90deg, var(--brand-purple-2), var(--brand-orange));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* Ticket perforation — a row of punched holes between the stub and the
+   main body, rendered as a repeating radial gradient so it stays crisp
+   at any width instead of tiling a raster image. */
+.perforation {
+  height: 1px;
+  background-image: radial-gradient(
+    circle,
+    var(--ground) 2.5px,
+    transparent 2.6px
+  );
+  background-size: 16px 1px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+.perforation::before,
+.perforation::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--ground);
+  margin-top: -10px;
+}
+.perforation::before {
+  left: -10px;
+}
+.perforation::after {
+  right: -10px;
+}
+
+/* Barcode-style flourish — a strip of bars of varying width, standing in
+   for a ticket's barcode without needing an actual generated image. */
+.barcode {
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--ink-dim) 0px,
+    var(--ink-dim) 2px,
+    transparent 2px,
+    transparent 5px,
+    var(--ink-dim) 5px,
+    var(--ink-dim) 8px,
+    transparent 8px,
+    transparent 11px,
+    var(--ink-dim) 11px,
+    var(--ink-dim) 12px,
+    transparent 12px,
+    transparent 16px
+  );
+  opacity: 0.5;
 }
