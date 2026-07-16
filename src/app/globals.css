@@ -1,29 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  --ground: #0b0f1a;
-  --paper: #131a2e;
-  --paper-2: #0e1426;
-  --ink: #f2efe6;
-  --ink-dim: #9aa1b8;
-  --ink-faint: #5c637d;
+  --ground: #0a0e1a;
+  --surface: #10152a;
+  --surface-2: #161c38;
+  --ink: #f4f2ff;
+  --ink-dim: #a3a9c2;
+  --ink-faint: #6b7190;
   --accent: #7c3aed;
   --accent-soft: #a78bfa;
-  --stamp: #f4a227;
-  --line: rgba(242, 239, 230, 0.14);
+  --line: rgba(244, 242, 255, 0.1);
+
+  /* Per-category colors — match the app's own listing-type palette so
+     the marketing site visually agrees with the product, not a generic
+     one-note purple wash. */
+  --cat-job: #3b8bf7;
+  --cat-housing: #f4a227;
+  --cat-market: #28d99e;
+  --cat-ride: #a78bfa;
+  --cat-event: #e85555;
+  --cat-verified: #f4a227;
 }
 
 @theme inline {
   --color-ground: var(--ground);
-  --color-paper: var(--paper);
-  --color-paper-2: var(--paper-2);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-ink: var(--ink);
   --color-ink-dim: var(--ink-dim);
   --color-ink-faint: var(--ink-faint);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
-  --color-stamp: var(--stamp);
   --color-line: var(--line);
+
+  --color-cat-job: var(--cat-job);
+  --color-cat-housing: var(--cat-housing);
+  --color-cat-market: var(--cat-market);
+  --color-cat-ride: var(--cat-ride);
+  --color-cat-event: var(--cat-event);
+  --color-cat-verified: var(--cat-verified);
 
   --font-display: var(--font-display-raw);
   --font-body: var(--font-body-raw);
@@ -36,54 +51,9 @@ body {
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Ticket perforation — a row of punched holes between the stub and the
-   main body, rendered as a repeating radial gradient so it stays crisp
-   at any width instead of tiling a raster image. */
-.perforation {
-  height: 1px;
-  background-image: radial-gradient(
-    circle,
-    var(--ground) 2.5px,
-    transparent 2.6px
-  );
-  background-size: 16px 1px;
-  background-repeat: repeat-x;
-  background-position: center;
-}
-.perforation::before,
-.perforation::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 999px;
-  background: var(--ground);
-  margin-top: -10px;
-}
-.perforation::before {
-  left: -10px;
-}
-.perforation::after {
-  right: -10px;
-}
-
-/* Barcode-style flourish — a strip of bars of varying width, standing in
-   for a ticket's barcode without needing an actual generated image. */
-.barcode {
-  background-image: repeating-linear-gradient(
-    90deg,
-    var(--ink-dim) 0px,
-    var(--ink-dim) 2px,
-    transparent 2px,
-    transparent 5px,
-    var(--ink-dim) 5px,
-    var(--ink-dim) 8px,
-    transparent 8px,
-    transparent 11px,
-    var(--ink-dim) 11px,
-    var(--ink-dim) 12px,
-    transparent 12px,
-    transparent 16px
-  );
-  opacity: 0.5;
+.brand-gradient-text {
+  background-image: linear-gradient(90deg, var(--accent-soft), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
