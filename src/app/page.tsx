@@ -4,48 +4,62 @@ const ANDROID_APK_URL =
   "https://expo.dev/artifacts/eas/TltzRBCDoEzGhPttLJG8v6sGDpjVJunw0X0e6cWAtxE.apk";
 
 const STATS = [
-  { num: "50K+", label: "Members" },
-  { num: "80", label: "Countries" },
-  { num: "24/7", label: "AI support" },
+  { num: "50K+", label: "Neighbors" },
+  { num: "80", label: "Countries called home" },
+  { num: "24/7", label: "Always someone here" },
 ];
 
+// Same emoji language as the app's own onboarding screen — warmer and more
+// human than precise line icons, and keeps the web and app feeling like one
+// family instead of the site reading as a separate, more "corporate" thing.
 const FEATURES = [
   {
     color: "var(--cat-job)",
-    icon: "briefcase",
+    emoji: "💼",
     title: "Jobs",
     desc: "Visa-friendly employers and OPT/CPT-eligible roles, posted by people who've been in your shoes.",
   },
   {
     color: "var(--cat-housing)",
-    icon: "home",
+    emoji: "🏠",
     title: "Housing",
     desc: "Rooms and apartments from your own community — no U.S. credit history required.",
   },
   {
     color: "var(--cat-market)",
-    icon: "market",
+    emoji: "🛍️",
     title: "Marketplace",
     desc: "Buy and sell furniture, electronics, and everyday essentials, locally.",
   },
   {
     color: "var(--cat-ride)",
-    icon: "car",
+    emoji: "🚗",
     title: "Rideshare",
     desc: "Split rides and get around your new city without a car of your own.",
   },
   {
     color: "var(--cat-event)",
-    icon: "calendar",
+    emoji: "🎉",
     title: "Events",
     desc: "Community meetups, legal-aid clinics, and job fairs happening near you.",
   },
   {
     color: "var(--cat-verified)",
-    icon: "shield",
+    emoji: "🩺",
     title: "Verified lawyers & doctors",
     desc: "Vetted by AbroAI, not user-posted — the professionals you can actually trust.",
   },
+];
+
+// Stand-in for real member avatars — an overlapping cluster of initials in
+// each category color reads as "a group of different people" without
+// fabricating photos or names that don't exist.
+const COMMUNITY_DOTS = [
+  { initial: "R", color: "var(--cat-job)" },
+  { initial: "M", color: "var(--cat-housing)" },
+  { initial: "A", color: "var(--cat-market)" },
+  { initial: "S", color: "var(--cat-ride)" },
+  { initial: "K", color: "var(--cat-event)" },
 ];
 
 const STEPS = [
@@ -72,8 +86,8 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 [background:radial-gradient(80%_50%_at_50%_0%,rgba(124,58,237,0.10),transparent)]" />
         <div className="relative mx-auto max-w-3xl px-6 pt-20 pb-16 text-center sm:pt-28 sm:pb-20">
-          <span className="inline-flex items-center rounded-full border border-line bg-surface px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-dim shadow-[0_1px_2px_rgba(26,26,31,0.04)]">
-            Built for immigrant communities
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/25 bg-accent/[0.08] px-3.5 py-1.5 text-[12.5px] font-semibold text-accent">
+            🤝 Built by and for immigrant communities
           </span>
           <h1 className="mt-6 font-display text-[2.6rem] font-semibold leading-[1.08] tracking-tight text-ink text-balance sm:text-6xl">
             Everything you need to build a life{" "}
@@ -102,15 +116,36 @@ export default function Home() {
             Direct APK install — allow &ldquo;unknown sources&rdquo; once, when prompted.
           </p>
 
-          <div className="mx-auto mt-14 grid max-w-md grid-cols-3 divide-x divide-line rounded-2xl border border-line bg-surface shadow-[0_2px_16px_-4px_rgba(26,26,31,0.06)]">
+          {/* Community cluster — a stack of real-feeling faces standing in
+              for actual member avatars, right above the numbers so the
+              stats read as "people," not just a metrics readout. */}
+          <div className="mt-14 flex flex-col items-center gap-3">
+            <div className="flex -space-x-3">
+              {COMMUNITY_DOTS.map((d) => (
+                <div
+                  key={d.initial}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-surface font-display text-sm font-semibold text-white shadow-[0_2px_6px_rgba(26,26,31,0.12)]"
+                  style={{ backgroundColor: d.color }}
+                >
+                  {d.initial}
+                </div>
+              ))}
+              <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-surface bg-surface-2 font-mono text-[10px] font-semibold text-ink-dim shadow-[0_2px_6px_rgba(26,26,31,0.12)]">
+                50K+
+              </div>
+            </div>
+            <p className="text-[13px] text-ink-faint">
+              Real people, not listings — helping each other settle in.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-8 grid max-w-md grid-cols-3 divide-x divide-line rounded-2xl border border-line bg-surface shadow-[0_2px_16px_-4px_rgba(26,26,31,0.06)]">
             {STATS.map((s) => (
               <div key={s.label} className="px-2 py-5 text-center">
                 <div className="font-display text-xl font-semibold text-ink sm:text-2xl">
                   {s.num}
                 </div>
-                <div className="mt-1 font-mono text-[10px] uppercase tracking-wide text-ink-faint">
-                  {s.label}
-                </div>
+                <div className="mt-1 text-[11px] text-ink-faint">{s.label}</div>
               </div>
             ))}
           </div>
@@ -120,10 +155,10 @@ export default function Home() {
       {/* ── Features ─────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
         <div className="mx-auto max-w-lg text-center">
-          <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-faint">
+          <span className="inline-flex rounded-full bg-surface-2 px-3 py-1 text-[12px] font-semibold text-ink-dim">
             What&apos;s inside
           </span>
-          <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink">
+          <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">
             One app, six ways to get settled
           </h2>
         </div>
@@ -136,10 +171,10 @@ export default function Home() {
               style={{ ["--card-color" as string]: f.color }}
             >
               <div
-                className="flex h-10 w-10 items-center justify-center rounded-xl"
+                className="flex h-11 w-11 items-center justify-center rounded-xl text-xl"
                 style={{ backgroundColor: `color-mix(in srgb, ${f.color} 16%, transparent)` }}
               >
-                <FeatureIcon name={f.icon} color={f.color} />
+                {f.emoji}
               </div>
               <h3 className="mt-4 font-display text-lg font-semibold text-ink">{f.title}</h3>
               <p className="mt-1.5 text-[14px] leading-relaxed text-ink-dim">{f.desc}</p>
@@ -152,10 +187,10 @@ export default function Home() {
       <section className="border-y border-line bg-surface-2">
         <div className="mx-auto max-w-4xl px-6 py-16 sm:py-20">
           <div className="mx-auto max-w-lg text-center">
-            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-faint">
+            <span className="inline-flex rounded-full bg-surface px-3 py-1 text-[12px] font-semibold text-ink-dim shadow-[0_1px_2px_rgba(26,26,31,0.04)]">
               Getting started
             </span>
-            <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink">
+            <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">
               How AbroAI works
             </h2>
           </div>
@@ -163,7 +198,7 @@ export default function Home() {
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
             {STEPS.map((step, i) => (
               <div key={step.title}>
-                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-accent/40 bg-accent/10 font-display text-sm font-semibold text-accent-soft">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent font-display text-sm font-semibold text-white shadow-[0_4px_10px_-2px_rgba(124,58,237,0.5)]">
                   {i + 1}
                 </div>
                 <h3 className="mt-4 font-display text-base font-semibold text-ink">
@@ -180,8 +215,8 @@ export default function Home() {
       <section className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
         <div className="grid grid-cols-1 items-center gap-10 rounded-3xl border border-line bg-surface p-8 shadow-[0_4px_24px_-8px_rgba(26,26,31,0.08)] sm:grid-cols-2 sm:p-12">
           <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--cat-verified)]/40 bg-[color:var(--cat-verified)]/10 px-3 py-1 font-mono text-[10px] uppercase tracking-wide text-[color:var(--cat-verified)]">
-              Admin-reviewed
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--cat-verified)]/10 px-3 py-1 text-[12px] font-semibold text-[color:var(--cat-verified)]">
+              ✅ Reviewed by our own team
             </span>
             <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
               Not everything should be user-posted.
@@ -303,62 +338,3 @@ function AppleIcon() {
   );
 }
 
-function FeatureIcon({ name, color }: { name: string; color: string }) {
-  const common = { width: 20, height: 20, viewBox: "0 0 24 24", fill: "none" as const };
-  switch (name) {
-    case "briefcase":
-      return (
-        <svg {...common}>
-          <rect x="3" y="7" width="18" height="13" rx="2" stroke={color} strokeWidth="1.8" />
-          <path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" stroke={color} strokeWidth="1.8" />
-          <path d="M3 12h18" stroke={color} strokeWidth="1.8" />
-        </svg>
-      );
-    case "home":
-      return (
-        <svg {...common}>
-          <path d="M4 11l8-7 8 7" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M6 10v9a1 1 0 001 1h10a1 1 0 001-1v-9" stroke={color} strokeWidth="1.8" strokeLinejoin="round" />
-        </svg>
-      );
-    case "market":
-      return (
-        <svg {...common}>
-          <path d="M4 8l1.5-4h13L20 8" stroke={color} strokeWidth="1.8" strokeLinejoin="round" />
-          <rect x="4" y="8" width="16" height="12" rx="1.5" stroke={color} strokeWidth="1.8" />
-          <path d="M9 12a3 3 0 006 0" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
-        </svg>
-      );
-    case "car":
-      return (
-        <svg {...common}>
-          <path d="M4 16V12l2-5h12l2 5v4" stroke={color} strokeWidth="1.8" strokeLinejoin="round" />
-          <rect x="3" y="16" width="18" height="4" rx="1" stroke={color} strokeWidth="1.8" />
-          <circle cx="7.5" cy="20" r="1.4" fill={color} />
-          <circle cx="16.5" cy="20" r="1.4" fill={color} />
-        </svg>
-      );
-    case "calendar":
-      return (
-        <svg {...common}>
-          <rect x="3" y="5" width="18" height="16" rx="2" stroke={color} strokeWidth="1.8" />
-          <path d="M3 10h18" stroke={color} strokeWidth="1.8" />
-          <path d="M8 3v4M16 3v4" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
-        </svg>
-      );
-    case "shield":
-      return (
-        <svg {...common}>
-          <path
-            d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"
-            stroke={color}
-            strokeWidth="1.8"
-            strokeLinejoin="round"
-          />
-          <path d="M9 12l2 2 4-4" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      );
-    default:
-      return null;
-  }
-}
