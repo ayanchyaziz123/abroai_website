@@ -70,9 +70,9 @@ export default function Home() {
 
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 [background:radial-gradient(80%_50%_at_50%_0%,rgba(124,58,237,0.16),transparent)]" />
+        <div className="pointer-events-none absolute inset-0 [background:radial-gradient(80%_50%_at_50%_0%,rgba(124,58,237,0.10),transparent)]" />
         <div className="relative mx-auto max-w-3xl px-6 pt-20 pb-16 text-center sm:pt-28 sm:pb-20">
-          <span className="inline-flex items-center rounded-full border border-line bg-surface px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-dim">
+          <span className="inline-flex items-center rounded-full border border-line bg-surface px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-dim shadow-[0_1px_2px_rgba(26,26,31,0.04)]">
             Built for immigrant communities
           </span>
           <h1 className="mt-6 font-display text-[2.6rem] font-semibold leading-[1.08] tracking-tight text-ink text-balance sm:text-6xl">
@@ -86,13 +86,14 @@ export default function Home() {
 
           <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a
+              id="download"
               href={ANDROID_APK_URL}
-              className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-ink px-7 py-3.5 text-sm font-bold text-ground transition hover:opacity-90 sm:w-auto"
+              className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-ink px-7 py-3.5 text-sm font-bold text-white shadow-[0_10px_24px_-8px_rgba(26,26,31,0.35)] transition hover:opacity-90 sm:w-auto"
             >
               <AndroidIcon />
               Download for Android
             </a>
-            <div className="flex w-full cursor-not-allowed items-center justify-center gap-2.5 rounded-xl border border-line px-7 py-3.5 text-sm font-bold text-ink-faint sm:w-auto">
+            <div className="flex w-full cursor-not-allowed items-center justify-center gap-2.5 rounded-xl border border-line bg-surface px-7 py-3.5 text-sm font-bold text-ink-faint sm:w-auto">
               <AppleIcon />
               iOS — coming soon
             </div>
@@ -101,7 +102,7 @@ export default function Home() {
             Direct APK install — allow &ldquo;unknown sources&rdquo; once, when prompted.
           </p>
 
-          <div className="mx-auto mt-14 grid max-w-md grid-cols-3 divide-x divide-line rounded-2xl border border-line bg-surface">
+          <div className="mx-auto mt-14 grid max-w-md grid-cols-3 divide-x divide-line rounded-2xl border border-line bg-surface shadow-[0_2px_16px_-4px_rgba(26,26,31,0.06)]">
             {STATS.map((s) => (
               <div key={s.label} className="px-2 py-5 text-center">
                 <div className="font-display text-xl font-semibold text-ink sm:text-2xl">
@@ -131,7 +132,7 @@ export default function Home() {
           {FEATURES.map((f) => (
             <div
               key={f.title}
-              className="rounded-2xl border border-line bg-surface p-6 transition hover:border-[color:var(--card-color)]"
+              className="rounded-2xl border border-line bg-surface p-6 shadow-[0_2px_12px_-6px_rgba(26,26,31,0.08)] transition hover:-translate-y-0.5 hover:border-[color:var(--card-color)] hover:shadow-[0_10px_24px_-10px_var(--card-color)]"
               style={{ ["--card-color" as string]: f.color }}
             >
               <div
@@ -148,7 +149,7 @@ export default function Home() {
       </section>
 
       {/* ── How it works ─────────────────────────────────────────────── */}
-      <section className="border-y border-line bg-surface/40">
+      <section className="border-y border-line bg-surface-2">
         <div className="mx-auto max-w-4xl px-6 py-16 sm:py-20">
           <div className="mx-auto max-w-lg text-center">
             <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-faint">
@@ -177,7 +178,7 @@ export default function Home() {
 
       {/* ── Verified professionals callout ──────────────────────────── */}
       <section className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
-        <div className="grid grid-cols-1 items-center gap-10 rounded-3xl border border-line bg-surface p-8 sm:grid-cols-2 sm:p-12">
+        <div className="grid grid-cols-1 items-center gap-10 rounded-3xl border border-line bg-surface p-8 shadow-[0_4px_24px_-8px_rgba(26,26,31,0.08)] sm:grid-cols-2 sm:p-12">
           <div>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--cat-verified)]/40 bg-[color:var(--cat-verified)]/10 px-3 py-1 font-mono text-[10px] uppercase tracking-wide text-[color:var(--cat-verified)]">
               Admin-reviewed
@@ -236,8 +237,8 @@ function Nav() {
         <span className="font-display text-lg font-semibold text-ink">AbroAI</span>
       </div>
       <a
-        href="#"
-        className="rounded-lg border border-line px-4 py-2 font-mono text-[11px] uppercase tracking-wide text-ink-dim transition hover:text-ink"
+        href="#download"
+        className="rounded-lg border border-line bg-surface px-4 py-2 font-mono text-[11px] uppercase tracking-wide text-ink-dim shadow-[0_1px_2px_rgba(26,26,31,0.04)] transition hover:text-ink"
       >
         Get the app
       </a>

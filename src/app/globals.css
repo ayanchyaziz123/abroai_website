@@ -1,25 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --ground: #0a0e1a;
-  --surface: #10152a;
-  --surface-2: #161c38;
-  --ink: #f4f2ff;
-  --ink-dim: #a3a9c2;
-  --ink-faint: #6b7190;
+  /* Warm paper white, not a stark clinical #fff — pairs better with the
+     Fraunces serif and keeps long-form terms/privacy text comfortable to
+     read. --surface sits a step whiter than --ground so cards lift off
+     the page; --surface-2 is a step warmer/darker for nested chips. */
+  --ground: #faf8f4;
+  --surface: #ffffff;
+  --surface-2: #f2efe8;
+  --ink: #1a1a1f;
+  --ink-dim: #5f5f6b;
+  --ink-faint: #96959f;
   --accent: #7c3aed;
-  --accent-soft: #a78bfa;
-  --line: rgba(244, 242, 255, 0.1);
+  --accent-soft: #9f6bff;
+  --line: rgba(26, 26, 31, 0.09);
 
   /* Per-category colors — match the app's own listing-type palette so
      the marketing site visually agrees with the product, not a generic
      one-note purple wash. */
-  --cat-job: #3b8bf7;
-  --cat-housing: #f4a227;
-  --cat-market: #28d99e;
-  --cat-ride: #a78bfa;
-  --cat-event: #e85555;
-  --cat-verified: #f4a227;
+  --cat-job: #2f6fd6;
+  --cat-housing: #c97e0f;
+  --cat-market: #1a9c76;
+  --cat-ride: #7c3aed;
+  --cat-event: #d1414a;
+  --cat-verified: #c97e0f;
 }
 
 @theme inline {
