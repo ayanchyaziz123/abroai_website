@@ -1,4 +1,5 @@
-import Image from "next/image";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 const ANDROID_APK_URL =
   "https://expo.dev/artifacts/eas/TltzRBCDoEzGhPttLJG8v6sGDpjVJunw0X0e6cWAtxE.apk";
@@ -12,6 +13,9 @@ const STATS = [
 // Same emoji language as the app's own onboarding screen — warmer and more
 // human than precise line icons, and keeps the web and app feeling like one
 // family instead of the site reading as a separate, more "corporate" thing.
+// Cards are color-blocked (tinted background, not a white card with a small
+// icon chip) so the section reads as six distinct, lived-in places rather
+// than six rows of a spec sheet.
 const FEATURES = [
   {
     color: "var(--cat-job)",
@@ -62,6 +66,25 @@ const COMMUNITY_DOTS = [
   { initial: "K", color: "var(--cat-event)" },
 ];
 
+// Not attributed quotes from invented people — these are illustrative
+// situations, framed that way on purpose, so the warmth comes from
+// specificity instead of manufactured testimonials with fake names and
+// faces attached.
+const SCENARIOS = [
+  {
+    color: "var(--cat-job)",
+    line: "Landed on OPT with 90 days on the clock and a resume nobody local recognized yet.",
+  },
+  {
+    color: "var(--cat-housing)",
+    line: "Needed a room by Friday, no U.S. credit history, no cosigner, no idea which neighborhoods were safe.",
+  },
+  {
+    color: "var(--cat-verified)",
+    line: "Had a real legal question at 11pm and didn't want to gamble on whoever showed up first in a search.",
+  },
+];
+
 const STEPS = [
   {
     title: "Create your account",
@@ -83,15 +106,15 @@ export default function Home() {
       <Nav />
 
       {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 [background:radial-gradient(80%_50%_at_50%_0%,rgba(124,58,237,0.10),transparent)]" />
+      <section className="paper-grain relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 [background:radial-gradient(90%_55%_at_50%_0%,rgba(200,83,47,0.12),transparent)]" />
         <div className="relative mx-auto max-w-3xl px-6 pt-20 pb-16 text-center sm:pt-28 sm:pb-20">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/25 bg-accent/[0.08] px-3.5 py-1.5 text-[12.5px] font-semibold text-accent">
             🤝 Built by and for immigrant communities
           </span>
           <h1 className="mt-6 font-display text-[2.6rem] font-semibold leading-[1.08] tracking-tight text-ink text-balance sm:text-6xl">
-            Everything you need to build a life{" "}
-            <span className="brand-gradient-text">abroad.</span>
+            You don&apos;t have to figure this out{" "}
+            <span className="brand-gradient-text">alone.</span>
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-[16px] leading-relaxed text-ink-dim">
             AbroAI connects immigrants with jobs, housing, marketplace deals, rides, events, and
@@ -102,7 +125,7 @@ export default function Home() {
             <a
               id="download"
               href={ANDROID_APK_URL}
-              className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-ink px-7 py-3.5 text-sm font-bold text-white shadow-[0_10px_24px_-8px_rgba(26,26,31,0.35)] transition hover:opacity-90 sm:w-auto"
+              className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-ink px-7 py-3.5 text-sm font-bold text-white shadow-[0_10px_24px_-8px_rgba(43,33,24,0.35)] transition hover:opacity-90 sm:w-auto"
             >
               <AndroidIcon />
               Download for Android
@@ -124,13 +147,13 @@ export default function Home() {
               {COMMUNITY_DOTS.map((d) => (
                 <div
                   key={d.initial}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-surface font-display text-sm font-semibold text-white shadow-[0_2px_6px_rgba(26,26,31,0.12)]"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-surface font-display text-sm font-semibold text-white shadow-[0_2px_6px_rgba(43,33,24,0.14)]"
                   style={{ backgroundColor: d.color }}
                 >
                   {d.initial}
                 </div>
               ))}
-              <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-surface bg-surface-2 font-mono text-[10px] font-semibold text-ink-dim shadow-[0_2px_6px_rgba(26,26,31,0.12)]">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-surface bg-surface-2 font-mono text-[10px] font-semibold text-ink-dim shadow-[0_2px_6px_rgba(43,33,24,0.14)]">
                 50K+
               </div>
             </div>
@@ -139,13 +162,44 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mx-auto mt-8 grid max-w-md grid-cols-3 divide-x divide-line rounded-2xl border border-line bg-surface shadow-[0_2px_16px_-4px_rgba(26,26,31,0.06)]">
+          <div className="mx-auto mt-8 grid max-w-md grid-cols-3 divide-x divide-line rounded-2xl border border-line bg-surface shadow-[0_2px_16px_-4px_rgba(43,33,24,0.08)]">
             {STATS.map((s) => (
               <div key={s.label} className="px-2 py-5 text-center">
                 <div className="font-display text-xl font-semibold text-ink sm:text-2xl">
                   {s.num}
                 </div>
                 <div className="mt-1 text-[11px] text-ink-faint">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Sound familiar? ──────────────────────────────────────────── */}
+      <section className="border-y border-line bg-surface-2">
+        <div className="mx-auto max-w-4xl px-6 py-16 sm:py-20">
+          <div className="mx-auto max-w-lg text-center">
+            <span className="inline-flex rounded-full bg-surface px-3 py-1 text-[12px] font-semibold text-ink-dim shadow-[0_1px_2px_rgba(43,33,24,0.05)]">
+              Sound familiar?
+            </span>
+            <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">
+              The first few months are the hardest part
+            </h2>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
+            {SCENARIOS.map((sc) => (
+              <div
+                key={sc.line}
+                className="rounded-2xl bg-surface p-6 shadow-[0_2px_12px_-6px_rgba(43,33,24,0.08)]"
+              >
+                <div
+                  className="h-1 w-8 rounded-full"
+                  style={{ backgroundColor: sc.color }}
+                />
+                <p className="mt-4 font-display text-[17px] italic leading-snug text-ink">
+                  &ldquo;{sc.line}&rdquo;
+                </p>
               </div>
             ))}
           </div>
@@ -167,12 +221,15 @@ export default function Home() {
           {FEATURES.map((f) => (
             <div
               key={f.title}
-              className="rounded-2xl border border-line bg-surface p-6 shadow-[0_2px_12px_-6px_rgba(26,26,31,0.08)] transition hover:-translate-y-0.5 hover:border-[color:var(--card-color)] hover:shadow-[0_10px_24px_-10px_var(--card-color)]"
-              style={{ ["--card-color" as string]: f.color }}
+              className="rounded-2xl p-6 transition hover:-translate-y-0.5"
+              style={{
+                backgroundColor: `color-mix(in srgb, ${f.color} 10%, var(--surface))`,
+                boxShadow: `0 2px 12px -6px color-mix(in srgb, ${f.color} 30%, transparent)`,
+              }}
             >
               <div
                 className="flex h-11 w-11 items-center justify-center rounded-xl text-xl"
-                style={{ backgroundColor: `color-mix(in srgb, ${f.color} 16%, transparent)` }}
+                style={{ backgroundColor: `color-mix(in srgb, ${f.color} 22%, transparent)` }}
               >
                 {f.emoji}
               </div>
@@ -187,7 +244,7 @@ export default function Home() {
       <section className="border-y border-line bg-surface-2">
         <div className="mx-auto max-w-4xl px-6 py-16 sm:py-20">
           <div className="mx-auto max-w-lg text-center">
-            <span className="inline-flex rounded-full bg-surface px-3 py-1 text-[12px] font-semibold text-ink-dim shadow-[0_1px_2px_rgba(26,26,31,0.04)]">
+            <span className="inline-flex rounded-full bg-surface px-3 py-1 text-[12px] font-semibold text-ink-dim shadow-[0_1px_2px_rgba(43,33,24,0.05)]">
               Getting started
             </span>
             <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">
@@ -198,7 +255,7 @@ export default function Home() {
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
             {STEPS.map((step, i) => (
               <div key={step.title}>
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent font-display text-sm font-semibold text-white shadow-[0_4px_10px_-2px_rgba(124,58,237,0.5)]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent font-display text-sm font-semibold text-white shadow-[0_4px_10px_-2px_rgba(200,83,47,0.5)]">
                   {i + 1}
                 </div>
                 <h3 className="mt-4 font-display text-base font-semibold text-ink">
@@ -213,7 +270,7 @@ export default function Home() {
 
       {/* ── Verified professionals callout ──────────────────────────── */}
       <section className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
-        <div className="grid grid-cols-1 items-center gap-10 rounded-3xl border border-line bg-surface p-8 shadow-[0_4px_24px_-8px_rgba(26,26,31,0.08)] sm:grid-cols-2 sm:p-12">
+        <div className="grid grid-cols-1 items-center gap-10 rounded-3xl border border-line bg-surface p-8 shadow-[0_4px_24px_-8px_rgba(43,33,24,0.1)] sm:grid-cols-2 sm:p-12">
           <div>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--cat-verified)]/10 px-3 py-1 text-[12px] font-semibold text-[color:var(--cat-verified)]">
               ✅ Reviewed by our own team
@@ -250,7 +307,7 @@ export default function Home() {
         </p>
         <a
           href={ANDROID_APK_URL}
-          className="mt-7 inline-flex items-center justify-center gap-2.5 rounded-xl bg-accent px-8 py-3.5 text-sm font-bold text-white shadow-[0_16px_40px_-12px_rgba(124,58,237,0.55)] transition hover:opacity-90"
+          className="mt-7 inline-flex items-center justify-center gap-2.5 rounded-xl bg-accent px-8 py-3.5 text-sm font-bold text-white shadow-[0_16px_40px_-12px_rgba(200,83,47,0.55)] transition hover:opacity-90"
         >
           <AndroidIcon />
           Download AbroAI for Android
@@ -259,45 +316,6 @@ export default function Home() {
 
       <Footer />
     </div>
-  );
-}
-
-function Nav() {
-  return (
-    <header className="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
-      <div className="flex items-center gap-2.5">
-        <div className="h-8 w-8 overflow-hidden rounded-lg">
-          <Image src="/app-icon.png" alt="" width={32} height={32} />
-        </div>
-        <span className="font-display text-lg font-semibold text-ink">AbroAI</span>
-      </div>
-      <a
-        href="#download"
-        className="rounded-lg border border-line bg-surface px-4 py-2 font-mono text-[11px] uppercase tracking-wide text-ink-dim shadow-[0_1px_2px_rgba(26,26,31,0.04)] transition hover:text-ink"
-      >
-        Get the app
-      </a>
-    </header>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="border-t border-line">
-      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-6 py-8 sm:flex-row">
-        <span className="font-mono text-[11px] text-ink-faint">
-          © {new Date().getFullYear()} AbroAI
-        </span>
-        <div className="flex items-center gap-5">
-          <a href="/terms" className="text-[12px] text-ink-dim transition hover:text-ink">
-            Terms
-          </a>
-          <a href="/privacy" className="text-[12px] text-ink-dim transition hover:text-ink">
-            Privacy
-          </a>
-        </div>
-      </div>
-    </footer>
   );
 }
 
@@ -337,4 +355,3 @@ function AppleIcon() {
     </svg>
   );
 }
-
