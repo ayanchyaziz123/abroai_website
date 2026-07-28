@@ -5,99 +5,42 @@ const ANDROID_APK_URL =
   "https://expo.dev/artifacts/eas/TltzRBCDoEzGhPttLJG8v6sGDpjVJunw0X0e6cWAtxE.apk";
 
 const STATS = [
-  { num: "50K+", label: "Neighbors" },
-  { num: "80", label: "Countries called home" },
-  { num: "24/7", label: "Always someone here" },
+  { num: "50K+", label: "neighbors" },
+  { num: "80", label: "countries called home" },
+  { num: "24/7", label: "always someone here" },
 ];
 
-// Same emoji language as the app's own onboarding screen — warmer and more
-// human than precise line icons, and keeps the web and app feeling like one
-// family instead of the site reading as a separate, more "corporate" thing.
-// Cards are color-blocked (tinted background, not a white card with a small
-// icon chip) so the section reads as six distinct, lived-in places rather
-// than six rows of a spec sheet.
+// Small illustrative example listings, styled as physical cards pinned to
+// a board next to the hero copy — shows what's actually inside the app
+// instead of an abstract stat card or a stock hero photo. Not attributed
+// to real people; each is labeled by category, not a fake name.
+const PINNED_EXAMPLES = [
+  { color: "var(--cat-job)", rotate: "-3deg", emoji: "💼", title: "Line cook, Astoria", meta: "Visa sponsorship possible" },
+  { color: "var(--cat-housing)", rotate: "2.5deg", emoji: "🏠", title: "Room in 2BR", meta: "No credit history needed" },
+  { color: "var(--cat-event)", rotate: "-1.5deg", emoji: "🎉", title: "Job fair, Saturday", meta: "12 going" },
+];
+
 const FEATURES = [
-  {
-    color: "var(--cat-job)",
-    emoji: "💼",
-    title: "Jobs",
-    desc: "Visa-friendly employers and OPT/CPT-eligible roles, posted by people who've been in your shoes.",
-  },
-  {
-    color: "var(--cat-housing)",
-    emoji: "🏠",
-    title: "Housing",
-    desc: "Rooms and apartments from your own community — no U.S. credit history required.",
-  },
-  {
-    color: "var(--cat-market)",
-    emoji: "🛍️",
-    title: "Marketplace",
-    desc: "Buy and sell furniture, electronics, and everyday essentials, locally.",
-  },
-  {
-    color: "var(--cat-ride)",
-    emoji: "🚗",
-    title: "Rideshare",
-    desc: "Split rides and get around your new city without a car of your own.",
-  },
-  {
-    color: "var(--cat-event)",
-    emoji: "🎉",
-    title: "Events",
-    desc: "Community meetups, legal-aid clinics, and job fairs happening near you.",
-  },
-  {
-    color: "var(--cat-verified)",
-    emoji: "🩺",
-    title: "Verified lawyers & doctors",
-    desc: "Vetted by AbroAI, not user-posted — the professionals you can actually trust.",
-  },
+  { color: "var(--cat-job)", emoji: "💼", title: "Jobs", desc: "Visa-friendly employers and OPT/CPT-eligible roles, posted by people who've been in your shoes.", rotate: "-1.5deg" },
+  { color: "var(--cat-housing)", emoji: "🏠", title: "Housing", desc: "Rooms and apartments from your own community — no U.S. credit history required.", rotate: "1deg" },
+  { color: "var(--cat-market)", emoji: "🛍️", title: "Marketplace", desc: "Buy and sell furniture, electronics, and everyday essentials, locally.", rotate: "-1deg" },
+  { color: "var(--cat-ride)", emoji: "🚗", title: "Rideshare", desc: "Split rides and get around your new city without a car of your own.", rotate: "1.5deg" },
+  { color: "var(--cat-event)", emoji: "🎉", title: "Events", desc: "Community meetups, legal-aid clinics, and job fairs happening near you.", rotate: "-2deg" },
+  { color: "var(--cat-verified)", emoji: "🩺", title: "Verified lawyers & doctors", desc: "Vetted by AbroAI, not user-posted — the professionals you can actually trust.", rotate: "1deg" },
 ];
 
-// Stand-in for real member avatars — an overlapping cluster of initials in
-// each category color reads as "a group of different people" without
-// fabricating photos or names that don't exist.
-const COMMUNITY_DOTS = [
-  { initial: "R", color: "var(--cat-job)" },
-  { initial: "M", color: "var(--cat-housing)" },
-  { initial: "A", color: "var(--cat-market)" },
-  { initial: "S", color: "var(--cat-ride)" },
-  { initial: "K", color: "var(--cat-event)" },
-];
-
-// Not attributed quotes from invented people — these are illustrative
-// situations, framed that way on purpose, so the warmth comes from
-// specificity instead of manufactured testimonials with fake names and
-// faces attached.
+// Illustrative situations, not attributed testimonials — the warmth comes
+// from specificity, not from manufactured quotes with invented names.
 const SCENARIOS = [
-  {
-    color: "var(--cat-job)",
-    line: "Landed on OPT with 90 days on the clock and a resume nobody local recognized yet.",
-  },
-  {
-    color: "var(--cat-housing)",
-    line: "Needed a room by Friday, no U.S. credit history, no cosigner, no idea which neighborhoods were safe.",
-  },
-  {
-    color: "var(--cat-verified)",
-    line: "Had a real legal question at 11pm and didn't want to gamble on whoever showed up first in a search.",
-  },
+  { color: "var(--cat-job)", line: "Landed on OPT with 90 days on the clock and a resume nobody local recognized yet.", rotate: "-2deg" },
+  { color: "var(--cat-housing)", line: "Needed a room by Friday, no U.S. credit history, no cosigner, no idea which neighborhoods were safe.", rotate: "1.5deg" },
+  { color: "var(--cat-verified)", line: "Had a real legal question at 11pm and didn't want to gamble on whoever showed up first in a search.", rotate: "-1deg" },
 ];
 
 const STEPS = [
-  {
-    title: "Create your account",
-    desc: "Sign up free in under a minute — no credit card, no paperwork.",
-  },
-  {
-    title: "Browse or post",
-    desc: "Find what you need, or share a job, room, or item with your community.",
-  },
-  {
-    title: "Connect directly",
-    desc: "Message in-app, and lean on verified professionals when it matters most.",
-  },
+  { title: "Create your account", desc: "Sign up free in under a minute — no credit card, no paperwork." },
+  { title: "Browse or post", desc: "Find what you need, or share a job, room, or item with your community." },
+  { title: "Connect directly", desc: "Message in-app, and lean on verified professionals when it matters most." },
 ];
 
 export default function Home() {
@@ -106,99 +49,99 @@ export default function Home() {
       <Nav />
 
       {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section className="paper-grain relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 [background:radial-gradient(90%_55%_at_50%_0%,rgba(200,83,47,0.12),transparent)]" />
-        <div className="relative mx-auto max-w-3xl px-6 pt-20 pb-16 text-center sm:pt-28 sm:pb-20">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/25 bg-accent/[0.08] px-3.5 py-1.5 text-[12.5px] font-semibold text-accent">
-            🤝 Built by and for immigrant communities
-          </span>
-          <h1 className="mt-6 font-display text-[2.6rem] font-semibold leading-[1.08] tracking-tight text-ink text-balance sm:text-6xl">
-            You don&apos;t have to figure this out{" "}
-            <span className="brand-gradient-text">alone.</span>
-          </h1>
-          <p className="mx-auto mt-5 max-w-xl text-[16px] leading-relaxed text-ink-dim">
-            AbroAI connects immigrants with jobs, housing, marketplace deals, rides, events, and
-            vetted professionals — all in one app, all in your own community.
-          </p>
+      <section className="paper-grain relative overflow-hidden border-b border-line">
+        <div className="relative mx-auto grid max-w-5xl grid-cols-1 gap-14 px-6 pt-16 pb-20 sm:pt-24 sm:pb-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          {/* Left: the note itself */}
+          <div>
+            <span className="font-hand text-2xl text-accent">Hey —</span>
+            <h1 className="mt-2 font-display text-[2.5rem] font-semibold italic leading-[1.08] tracking-tight text-ink text-balance sm:text-5xl">
+              you don&apos;t have to figure this out alone.
+            </h1>
+            <p className="mt-5 max-w-md text-[16px] leading-relaxed text-ink-dim">
+              AbroAI connects immigrants with jobs, housing, marketplace deals, rides, events, and
+              vetted professionals — all in one app, all from people who&apos;ve done this move
+              before.
+            </p>
 
-          <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <a
-              id="download"
-              href={ANDROID_APK_URL}
-              className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-ink px-7 py-3.5 text-sm font-bold text-white shadow-[0_10px_24px_-8px_rgba(43,33,24,0.35)] transition hover:opacity-90 sm:w-auto"
-            >
-              <AndroidIcon />
-              Download for Android
-            </a>
-            <div className="flex w-full cursor-not-allowed items-center justify-center gap-2.5 rounded-xl border border-line bg-surface px-7 py-3.5 text-sm font-bold text-ink-faint sm:w-auto">
-              <AppleIcon />
-              iOS — coming soon
+            <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+              <a
+                id="download"
+                href={ANDROID_APK_URL}
+                className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-ink px-7 py-3.5 text-sm font-bold text-white shadow-[0_10px_24px_-8px_rgba(43,33,24,0.35)] transition hover:-rotate-1 hover:opacity-90 sm:w-auto"
+              >
+                <AndroidIcon />
+                Download for Android
+              </a>
+              <div className="flex w-full cursor-not-allowed items-center justify-center gap-2.5 rounded-2xl border border-line bg-surface px-7 py-3.5 text-sm font-bold text-ink-faint sm:w-auto">
+                <AppleIcon />
+                iOS — coming soon
+              </div>
             </div>
-          </div>
-          <p className="mt-3 font-mono text-[11px] text-ink-faint">
-            Direct APK install — allow &ldquo;unknown sources&rdquo; once, when prompted.
-          </p>
+            <p className="mt-3 font-mono text-[11px] text-ink-faint">
+              Direct APK install — allow &ldquo;unknown sources&rdquo; once, when prompted.
+            </p>
 
-          {/* Community cluster — a stack of real-feeling faces standing in
-              for actual member avatars, right above the numbers so the
-              stats read as "people," not just a metrics readout. */}
-          <div className="mt-14 flex flex-col items-center gap-3">
-            <div className="flex -space-x-3">
-              {COMMUNITY_DOTS.map((d) => (
-                <div
-                  key={d.initial}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-surface font-display text-sm font-semibold text-white shadow-[0_2px_6px_rgba(43,33,24,0.14)]"
-                  style={{ backgroundColor: d.color }}
-                >
-                  {d.initial}
+            <div className="mt-10 flex flex-wrap gap-x-7 gap-y-2">
+              {STATS.map((s) => (
+                <div key={s.label} className="flex items-baseline gap-1.5">
+                  <span className="font-display text-lg font-semibold text-ink">{s.num}</span>
+                  <span className="text-[12.5px] text-ink-faint">{s.label}</span>
                 </div>
               ))}
-              <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-surface bg-surface-2 font-mono text-[10px] font-semibold text-ink-dim shadow-[0_2px_6px_rgba(43,33,24,0.14)]">
-                50K+
-              </div>
             </div>
-            <p className="text-[13px] text-ink-faint">
-              Real people, not listings — helping each other settle in.
-            </p>
           </div>
 
-          <div className="mx-auto mt-8 grid max-w-md grid-cols-3 divide-x divide-line rounded-2xl border border-line bg-surface shadow-[0_2px_16px_-4px_rgba(43,33,24,0.08)]">
-            {STATS.map((s) => (
-              <div key={s.label} className="px-2 py-5 text-center">
-                <div className="font-display text-xl font-semibold text-ink sm:text-2xl">
-                  {s.num}
+          {/* Right: pinned examples of what's actually inside the app */}
+          <div className="relative mx-auto flex w-full max-w-xs flex-col gap-7 py-4 sm:max-w-sm">
+            {PINNED_EXAMPLES.map((ex) => (
+              <div
+                key={ex.title}
+                className="relative rounded-lg border border-line bg-surface px-5 py-4 shadow-[0_10px_20px_-8px_rgba(43,33,24,0.25)]"
+                style={{ transform: `rotate(${ex.rotate})`, ["--pin-color" as string]: ex.color }}
+              >
+                <span className="pin-dot" />
+                <div className="flex items-center gap-2.5">
+                  <span
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-base"
+                    style={{ backgroundColor: `color-mix(in srgb, ${ex.color} 20%, transparent)` }}
+                  >
+                    {ex.emoji}
+                  </span>
+                  <div>
+                    <p className="font-display text-[15px] font-semibold text-ink">{ex.title}</p>
+                    <p className="text-[12.5px] text-ink-dim">{ex.meta}</p>
+                  </div>
                 </div>
-                <div className="mt-1 text-[11px] text-ink-faint">{s.label}</div>
               </div>
             ))}
+            <p className="font-hand mt-1 text-center text-lg text-ink-faint">
+              a few things people posted this week
+            </p>
           </div>
         </div>
       </section>
 
       {/* ── Sound familiar? ──────────────────────────────────────────── */}
-      <section className="border-y border-line bg-surface-2">
+      <section className="bg-board">
         <div className="mx-auto max-w-4xl px-6 py-16 sm:py-20">
           <div className="mx-auto max-w-lg text-center">
-            <span className="inline-flex rounded-full bg-surface px-3 py-1 text-[12px] font-semibold text-ink-dim shadow-[0_1px_2px_rgba(43,33,24,0.05)]">
-              Sound familiar?
-            </span>
-            <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">
+            <span className="font-hand text-2xl text-ink">sound familiar?</span>
+            <h2 className="mt-1 font-display text-3xl font-semibold tracking-tight text-ink">
               The first few months are the hardest part
             </h2>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
+          <div className="mt-14 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3">
             {SCENARIOS.map((sc) => (
               <div
                 key={sc.line}
-                className="rounded-2xl bg-surface p-6 shadow-[0_2px_12px_-6px_rgba(43,33,24,0.08)]"
+                className="relative rounded-sm bg-surface px-5 py-6 shadow-[0_10px_18px_-8px_rgba(43,33,24,0.3)]"
+                style={{ transform: `rotate(${sc.rotate})` }}
               >
-                <div
-                  className="h-1 w-8 rounded-full"
-                  style={{ backgroundColor: sc.color }}
-                />
-                <p className="mt-4 font-display text-[17px] italic leading-snug text-ink">
-                  &ldquo;{sc.line}&rdquo;
+                <span className="tape-strip" />
+                <div className="h-1 w-8 rounded-full" style={{ backgroundColor: sc.color }} />
+                <p className="mt-4 font-display text-[16.5px] italic leading-snug text-ink">
+                  {sc.line}
                 </p>
               </div>
             ))}
@@ -206,29 +149,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Features ─────────────────────────────────────────────────── */}
-      <section className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+      {/* ── Features (corkboard) ─────────────────────────────────────── */}
+      <section className="paper-grain relative mx-auto max-w-5xl px-6 py-16 sm:py-24">
         <div className="mx-auto max-w-lg text-center">
-          <span className="inline-flex rounded-full bg-surface-2 px-3 py-1 text-[12px] font-semibold text-ink-dim">
-            What&apos;s inside
-          </span>
-          <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">
+          <span className="font-hand text-2xl text-accent">what&apos;s inside</span>
+          <h2 className="mt-1 font-display text-3xl font-semibold tracking-tight text-ink">
             One app, six ways to get settled
           </h2>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((f) => (
             <div
               key={f.title}
-              className="rounded-2xl p-6 transition hover:-translate-y-0.5"
+              className="relative rounded-lg p-6 transition hover:!rotate-0"
               style={{
-                backgroundColor: `color-mix(in srgb, ${f.color} 10%, var(--surface))`,
-                boxShadow: `0 2px 12px -6px color-mix(in srgb, ${f.color} 30%, transparent)`,
+                backgroundColor: `color-mix(in srgb, ${f.color} 11%, var(--surface))`,
+                boxShadow: `0 10px 20px -10px color-mix(in srgb, ${f.color} 45%, transparent)`,
+                transform: `rotate(${f.rotate})`,
+                ["--pin-color" as string]: f.color,
               }}
             >
+              <span className="pin-dot" />
               <div
-                className="flex h-11 w-11 items-center justify-center rounded-xl text-xl"
+                className="flex h-11 w-11 items-center justify-center rounded-full text-xl"
                 style={{ backgroundColor: `color-mix(in srgb, ${f.color} 22%, transparent)` }}
               >
                 {f.emoji}
@@ -244,39 +188,73 @@ export default function Home() {
       <section className="border-y border-line bg-surface-2">
         <div className="mx-auto max-w-4xl px-6 py-16 sm:py-20">
           <div className="mx-auto max-w-lg text-center">
-            <span className="inline-flex rounded-full bg-surface px-3 py-1 text-[12px] font-semibold text-ink-dim shadow-[0_1px_2px_rgba(43,33,24,0.05)]">
-              Getting started
-            </span>
-            <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">
+            <span className="font-hand text-2xl text-accent">getting started</span>
+            <h2 className="mt-1 font-display text-3xl font-semibold tracking-tight text-ink">
               How AbroAI works
             </h2>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
-            {STEPS.map((step, i) => (
-              <div key={step.title}>
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent font-display text-sm font-semibold text-white shadow-[0_4px_10px_-2px_rgba(200,83,47,0.5)]">
-                  {i + 1}
+          <div className="relative mt-16">
+            {/* Hand-drawn connecting path — a wavy dashed line instead of
+                a straight corporate connector. Hidden on mobile where the
+                steps stack vertically and a horizontal path reads oddly. */}
+            <svg
+              className="pointer-events-none absolute left-0 right-0 top-[18px] hidden w-full sm:block"
+              height="24"
+              viewBox="0 0 600 24"
+              preserveAspectRatio="none"
+              fill="none"
+            >
+              <path
+                d="M40 12 C 150 -6, 250 30, 300 12 S 470 -6, 560 12"
+                stroke="var(--accent)"
+                strokeOpacity="0.35"
+                strokeWidth="2"
+                strokeDasharray="1 9"
+                strokeLinecap="round"
+              />
+            </svg>
+
+            <div className="relative grid grid-cols-1 gap-10 sm:grid-cols-3">
+              {STEPS.map((step, i) => (
+                <div key={step.title}>
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent font-hand text-lg font-bold text-white shadow-[0_4px_10px_-2px_rgba(200,83,47,0.5)]">
+                    {i + 1}
+                  </div>
+                  <h3 className="mt-4 font-display text-base font-semibold text-ink">
+                    {step.title}
+                  </h3>
+                  <p className="mt-1.5 text-[14px] leading-relaxed text-ink-dim">{step.desc}</p>
                 </div>
-                <h3 className="mt-4 font-display text-base font-semibold text-ink">
-                  {step.title}
-                </h3>
-                <p className="mt-1.5 text-[14px] leading-relaxed text-ink-dim">{step.desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── Verified professionals callout ──────────────────────────── */}
-      <section className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
-        <div className="grid grid-cols-1 items-center gap-10 rounded-3xl border border-line bg-surface p-8 shadow-[0_4px_24px_-8px_rgba(43,33,24,0.1)] sm:grid-cols-2 sm:p-12">
-          <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--cat-verified)]/10 px-3 py-1 text-[12px] font-semibold text-[color:var(--cat-verified)]">
-              ✅ Reviewed by our own team
+      <section className="mx-auto max-w-5xl px-6 py-16 sm:py-24">
+        <div className="relative grid grid-cols-1 items-center gap-10 rounded-2xl border border-line bg-surface p-8 shadow-[0_10px_30px_-12px_rgba(43,33,24,0.18)] sm:grid-cols-2 sm:p-12">
+          {/* Rubber-stamp mark instead of a bordered "trust card" — angled,
+              double-ringed, ink-colored — reads as authenticated by hand
+              rather than a SaaS trust badge. */}
+          <div
+            className="absolute -top-6 right-6 flex h-20 w-20 -rotate-12 items-center justify-center rounded-full border-2 border-dashed text-center sm:right-10"
+            style={{ borderColor: "var(--cat-verified)", color: "var(--cat-verified)" }}
+          >
+            <span className="font-display text-[10px] font-bold uppercase leading-tight tracking-wider">
+              Team
+              <br />
+              Verified
             </span>
-            <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-              Not everything should be user-posted.
+          </div>
+
+          <div>
+            <span className="font-hand text-2xl" style={{ color: "var(--cat-verified)" }}>
+              not everything should be user-posted
+            </span>
+            <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+              We check these ones ourselves.
             </h2>
             <p className="mt-3 text-[15px] leading-relaxed text-ink-dim">
               Every lawyer and doctor in AbroAI is added and reviewed by our own team — not
@@ -299,15 +277,13 @@ export default function Home() {
 
       {/* ── Final CTA ────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-3xl px-6 pb-20 pt-4 text-center sm:pb-28">
-        <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-          Ready when you are.
+        <span className="font-hand text-xl text-ink-dim">P.S. —</span>
+        <h2 className="mt-1 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+          free to join, ready when you are.
         </h2>
-        <p className="mx-auto mt-3 max-w-md text-[15px] text-ink-dim">
-          Free to join. Takes less than a minute to get started.
-        </p>
         <a
           href={ANDROID_APK_URL}
-          className="mt-7 inline-flex items-center justify-center gap-2.5 rounded-xl bg-accent px-8 py-3.5 text-sm font-bold text-white shadow-[0_16px_40px_-12px_rgba(200,83,47,0.55)] transition hover:opacity-90"
+          className="mt-7 inline-flex items-center justify-center gap-2.5 rounded-2xl bg-accent px-8 py-3.5 text-sm font-bold text-white shadow-[0_16px_40px_-12px_rgba(200,83,47,0.55)] transition hover:-rotate-1 hover:opacity-90"
         >
           <AndroidIcon />
           Download AbroAI for Android

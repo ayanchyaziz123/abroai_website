@@ -1,28 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  /* Warm ivory with a gold undertone, not the flat cream-and-terracotta combo
-     every AI-generated "warm" site defaults to — sits close to raw paper,
-     the color of a room lit by a lamp rather than a screen. --surface is
-     true white so cards lift; --surface-2 is a deeper gold-tinted step for
-     nested chips and section bands. */
+  /* Warm ivory with a gold undertone. --surface sits a step whiter so
+     pinned cards lift off the board; --surface-2 is a deeper warm step
+     used as the "board" itself behind pinned content. */
   --ground: #fbf3e6;
-  --surface: #ffffff;
+  --surface: #fffdf9;
   --surface-2: #f4e7d2;
+  --board: #efd9ad;
   --ink: #2b2118;
   --ink-dim: #6e5c47;
   --ink-faint: #a3907a;
-  /* Clay/terracotta-rose as the one accent doing real work — warm without
-     being the exact cliché pairing, and distinct from every category hue
-     below so it always reads as "the brand," not "another listing type." */
   --accent: #c8532f;
   --accent-soft: #e08a5f;
-  --line: rgba(43, 33, 24, 0.11);
+  --line: rgba(43, 33, 24, 0.13);
 
   /* Per-category colors — match the app's own listing-type palette so the
-     marketing site visually agrees with the product. Left untouched by the
-     redesign on purpose: this is the one place consistency with the app
-     itself matters more than the new palette. */
+     marketing site visually agrees with the product. */
   --cat-job: #2f6fd6;
   --cat-housing: #c97e0f;
   --cat-market: #1a9c76;
@@ -35,6 +29,7 @@
   --color-ground: var(--ground);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
+  --color-board: var(--board);
   --color-ink: var(--ink);
   --color-ink-dim: var(--ink-dim);
   --color-ink-faint: var(--ink-faint);
@@ -52,6 +47,7 @@
   --font-display: var(--font-display-raw);
   --font-body: var(--font-body-raw);
   --font-mono: var(--font-mono-raw);
+  --font-hand: var(--font-hand-raw);
 }
 
 body {
@@ -67,10 +63,8 @@ body {
   color: transparent;
 }
 
-/* Faint paper grain — the one texture flourish on the whole site, applied
-   only to the hero. Gives the warm ground some tooth instead of reading as
-   a flat color swatch, without becoming a "decorative noise everywhere"
-   crutch. */
+/* Faint paper grain — applied to board-textured sections so the warm
+   ground has tooth instead of reading as a flat color swatch. */
 .paper-grain {
   position: relative;
 }
@@ -82,4 +76,38 @@ body {
   opacity: 0.5;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.035 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* A small round pin/tack — the physical detail that sells "this is pinned
+   to a board," not a div with a shadow. Positioned by the parent. */
+.pin-dot {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 13px;
+  height: 13px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 32% 28%, #fff, var(--pin-color, var(--accent)) 55%, color-mix(in srgb, var(--pin-color, var(--accent)) 70%, black) 100%);
+  box-shadow: 0 2px 3px rgba(43, 33, 24, 0.35);
+  z-index: 2;
+}
+
+/* A short strip of "tape" holding a note down — used instead of a pin on
+   the sticky-note scenario cards for visual variety. */
+.tape-strip {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 56px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 1px 2px rgba(43, 33, 24, 0.12);
+  z-index: 2;
+}
+
+.font-hand {
+  font-family: var(--font-hand), cursive;
 }

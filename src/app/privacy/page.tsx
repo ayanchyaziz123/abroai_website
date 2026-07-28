@@ -45,13 +45,6 @@ export default function PrivacyPolicy() {
               Your profile can include a handle, bio, home country, current city, and a profile
               or cover photo. This information is visible to other users.
             </P>
-            <SubHeading>ID verification (optional)</SubHeading>
-            <P>
-              If you choose to verify your identity, you submit a photo of a government-issued ID.
-              This document is reviewed manually by an administrator and is never shown to other
-              users or exposed through the app&apos;s public API — only your verification status
-              (verified / pending / not verified) is visible to others.
-            </P>
             <SubHeading>Listings and content</SubHeading>
             <P>
               Anything you post — job listings, housing listings, marketplace items, service or
@@ -91,7 +84,6 @@ export default function PrivacyPolicy() {
             <Ul
               items={[
                 "Operate the core features of the app — listings, messaging, search, and location-based results.",
-                "Verify your identity when you opt into ID verification.",
                 "Process payments for premium listing upgrades.",
                 "Send you notifications about messages, listing activity, and account status.",
                 "Investigate reports of abuse, fraud, or content that violates our Terms.",
@@ -116,7 +108,6 @@ export default function PrivacyPolicy() {
             <Ul
               items={[
                 "You can edit or delete your profile information, listings, and messages from within the app.",
-                "You can withdraw ID verification by contacting us; submitted ID documents can be deleted on request.",
                 "You can disable location and notification permissions at any time in your device settings.",
                 "You can request a copy of your data or request account deletion by contacting us at the email below.",
               ]}
