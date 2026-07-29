@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — AbroAI",
-  description: "How AbroAI collects, uses, and protects your data.",
+  title: "Privacy Policy — Abrofy",
+  description: "How Abrofy collects, uses, and protects your data.",
 };
 
 const LAST_UPDATED = "July 15, 2026";
@@ -17,7 +17,7 @@ export default function PrivacyPolicy() {
           href="/"
           className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-dim transition hover:text-ink"
         >
-          ← AbroAI
+          ← Abrofy
         </Link>
 
         <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
@@ -27,9 +27,9 @@ export default function PrivacyPolicy() {
 
         <div className="mt-10 space-y-10 text-[15px] leading-relaxed text-ink-dim">
           <p>
-            AbroAI (&ldquo;AbroAI,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo;) helps immigrant
+            Abrofy (&ldquo;Abrofy,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo;) helps immigrant
             communities find jobs, housing, marketplace listings, rides, events, and verified
-            professionals. This policy explains what information we collect through the AbroAI
+            professionals. This policy explains what information we collect through the Abrofy
             app, why we collect it, and the choices you have.
           </p>
 
@@ -133,7 +133,7 @@ export default function PrivacyPolicy() {
 
           <Section title="Children's privacy">
             <P>
-              AbroAI is not intended for anyone under 18. We do not knowingly collect information
+              Abrofy is not intended for anyone under 18. We do not knowingly collect information
               from children. If you believe a child has provided us information, contact us and
               we will remove it.
             </P>

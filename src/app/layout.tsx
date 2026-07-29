@@ -30,9 +30,9 @@ const hand = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "AbroAI — Get the app",
+  title: "Abrofy — Get the app",
   description:
-    "Download AbroAI for Android and iOS — jobs, housing, marketplace, and community for immigrants, in one app.",
+    "Download Abrofy for Android and iOS — jobs, housing, marketplace, and community for immigrants, in one app.",
 };
 
 export default function RootLayout({

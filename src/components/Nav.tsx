@@ -7,7 +7,7 @@ export default function Nav() {
         <div className="h-8 w-8 overflow-hidden rounded-lg">
           <Image src="/app-icon.png" alt="" width={32} height={32} />
         </div>
-        <span className="font-display text-lg font-semibold text-ink">AbroAI</span>
+        <span className="font-display text-lg font-semibold text-ink">Abrofy</span>
       </div>
       <a
         href="/#download"

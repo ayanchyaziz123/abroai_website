@@ -26,7 +26,7 @@ const FEATURES = [
   { color: "var(--cat-market)", emoji: "🛍️", title: "Marketplace", desc: "Buy and sell furniture, electronics, and everyday essentials, locally.", rotate: "-1deg" },
   { color: "var(--cat-ride)", emoji: "🚗", title: "Rideshare", desc: "Split rides and get around your new city without a car of your own.", rotate: "1.5deg" },
   { color: "var(--cat-event)", emoji: "🎉", title: "Events", desc: "Community meetups, legal-aid clinics, and job fairs happening near you.", rotate: "-2deg" },
-  { color: "var(--cat-verified)", emoji: "🩺", title: "Verified lawyers & doctors", desc: "Vetted by AbroAI, not user-posted — the professionals you can actually trust.", rotate: "1deg" },
+  { color: "var(--cat-verified)", emoji: "🩺", title: "Verified lawyers & doctors", desc: "Vetted by Abrofy, not user-posted — the professionals you can actually trust.", rotate: "1deg" },
 ];
 
 // Illustrative situations, not attributed testimonials — the warmth comes
@@ -58,7 +58,7 @@ export default function Home() {
               you don&apos;t have to figure this out alone.
             </h1>
             <p className="mt-5 max-w-md text-[16px] leading-relaxed text-ink-dim">
-              AbroAI connects immigrants with jobs, housing, marketplace deals, rides, events, and
+              Abrofy connects immigrants with jobs, housing, marketplace deals, rides, events, and
               vetted professionals — all in one app, all from people who&apos;ve done this move
               before.
             </p>
@@ -190,7 +190,7 @@ export default function Home() {
           <div className="mx-auto max-w-lg text-center">
             <span className="font-hand text-2xl text-accent">getting started</span>
             <h2 className="mt-1 font-display text-3xl font-semibold tracking-tight text-ink">
-              How AbroAI works
+              How Abrofy works
             </h2>
           </div>
 
@@ -257,7 +257,7 @@ export default function Home() {
               We check these ones ourselves.
             </h2>
             <p className="mt-3 text-[15px] leading-relaxed text-ink-dim">
-              Every lawyer and doctor in AbroAI is added and reviewed by our own team — not
+              Every lawyer and doctor in Abrofy is added and reviewed by our own team — not
               submitted by users like every other listing in the app. When you need real legal or
               medical help, that distinction matters.
             </p>
@@ -286,7 +286,7 @@ export default function Home() {
           className="mt-7 inline-flex items-center justify-center gap-2.5 rounded-2xl bg-accent px-8 py-3.5 text-sm font-bold text-white shadow-[0_16px_40px_-12px_rgba(200,83,47,0.55)] transition hover:-rotate-1 hover:opacity-90"
         >
           <AndroidIcon />
-          Download AbroAI for Android
+          Download Abrofy for Android
         </a>
       </section>
 
