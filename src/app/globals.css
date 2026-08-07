@@ -1,19 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  /* Warm ivory with a gold undertone. --surface sits a step whiter so
-     pinned cards lift off the board; --surface-2 is a deeper warm step
-     used as the "board" itself behind pinned content. */
-  --ground: #fbf3e6;
-  --surface: #fffdf9;
-  --surface-2: #f4e7d2;
-  --board: #efd9ad;
-  --ink: #2b2118;
-  --ink-dim: #6e5c47;
-  --ink-faint: #a3907a;
-  --accent: #c8532f;
-  --accent-soft: #e08a5f;
-  --line: rgba(43, 33, 24, 0.13);
+  /* Warm, quiet neutrals — no paper texture, no board. A plain warm
+     off-white reads calmer and more human than a stark white or a
+     textured "craft" surface. */
+  --ground: #fdfbf7;
+  --surface: #ffffff;
+  --surface-2: #f4efe4;
+  --ink: #241f1a;
+  --ink-dim: #5c5248;
+  --ink-faint: #948a7d;
+  --line: rgba(36, 31, 26, 0.1);
+
+  /* Deep pine green — chosen instead of the warm-orange-on-cream combo
+     for a calmer, more trustworthy "community" register rather than an
+     energetic "startup" one. Gold is the secondary warm accent, used for
+     small highlights (flags, ratings, the verified badge). */
+  --accent: #1f6e52;
+  --accent-soft: #3f9174;
+  --accent-dim: rgba(31, 110, 82, 0.1);
+  --gold: #c98a3a;
+  --gold-dim: rgba(201, 138, 58, 0.14);
 
   /* Per-category colors — match the app's own listing-type palette so the
      marketing site visually agrees with the product. */
@@ -22,32 +29,39 @@
   --cat-market: #1a9c76;
   --cat-ride: #7c3aed;
   --cat-event: #d1414a;
-  --cat-verified: #c97e0f;
 }
 
 @theme inline {
   --color-ground: var(--ground);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
-  --color-board: var(--board);
   --color-ink: var(--ink);
   --color-ink-dim: var(--ink-dim);
   --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
-  --color-line: var(--line);
+  --color-accent-dim: var(--accent-dim);
+  --color-gold: var(--gold);
+  --color-gold-dim: var(--gold-dim);
 
   --color-cat-job: var(--cat-job);
   --color-cat-housing: var(--cat-housing);
   --color-cat-market: var(--cat-market);
   --color-cat-ride: var(--cat-ride);
   --color-cat-event: var(--cat-event);
-  --color-cat-verified: var(--cat-verified);
 
   --font-display: var(--font-display-raw);
   --font-body: var(--font-body-raw);
   --font-mono: var(--font-mono-raw);
-  --font-hand: var(--font-hand-raw);
+}
+
+:root {
+  /* Without this, a browser/OS in dark mode can silently re-darken parts
+     of the page (form controls, scrollbars, and on some engines more)
+     since nothing here ever declares this is a light-only design. */
+  color-scheme: light;
 }
 
 body {
@@ -57,57 +71,8 @@ body {
 }
 
 .brand-gradient-text {
-  background-image: linear-gradient(90deg, var(--accent), var(--accent-soft));
+  background-image: linear-gradient(90deg, var(--accent), var(--gold));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
-
-/* Faint paper grain — applied to board-textured sections so the warm
-   ground has tooth instead of reading as a flat color swatch. */
-.paper-grain {
-  position: relative;
-}
-.paper-grain::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.5;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.035 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-}
-
-/* A small round pin/tack — the physical detail that sells "this is pinned
-   to a board," not a div with a shadow. Positioned by the parent. */
-.pin-dot {
-  position: absolute;
-  top: -7px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 13px;
-  height: 13px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 32% 28%, #fff, var(--pin-color, var(--accent)) 55%, color-mix(in srgb, var(--pin-color, var(--accent)) 70%, black) 100%);
-  box-shadow: 0 2px 3px rgba(43, 33, 24, 0.35);
-  z-index: 2;
-}
-
-/* A short strip of "tape" holding a note down — used instead of a pin on
-   the sticky-note scenario cards for visual variety. */
-.tape-strip {
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-2deg);
-  width: 56px;
-  height: 22px;
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 1px 2px rgba(43, 33, 24, 0.12);
-  z-index: 2;
-}
-
-.font-hand {
-  font-family: var(--font-hand), cursive;
 }

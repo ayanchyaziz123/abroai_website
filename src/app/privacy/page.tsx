@@ -11,7 +11,7 @@ const LAST_UPDATED = "July 15, 2026";
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-ground">
-      <div className="pointer-events-none fixed inset-0 [background:radial-gradient(120%_60%_at_50%_-10%,rgba(200,83,47,0.10),transparent)]" />
+      <div className="pointer-events-none fixed inset-0 [background:radial-gradient(120%_60%_at_50%_-10%,rgba(31,110,82,0.08),transparent)]" />
       <main className="relative mx-auto max-w-2xl px-5 py-16 sm:py-20">
         <Link
           href="/"
