@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, ReactNode, WheelEvent } from "react";
+import { useEffect, useState, ReactNode } from "react";
 import Link from "next/link";
 import { api } from "@/lib/api";
 
@@ -18,7 +18,6 @@ export default function HomeRow<T extends { id: string | number }>({
   renderItem: (item: T) => ReactNode;
 }) {
   const [items, setItems] = useState<T[] | null>(null);
-  const scrollerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -26,7 +25,7 @@ export default function HomeRow<T extends { id: string | number }>({
       .then((data) => {
         if (cancelled) return;
         const results = (data as { results?: T[] })?.results ?? (data as T[]);
-        setItems(Array.isArray(results) ? results.slice(0, 8) : []);
+        setItems(Array.isArray(results) ? results.slice(0, 6) : []);
       })
       .catch(() => {
         if (!cancelled) setItems([]);
@@ -35,19 +34,6 @@ export default function HomeRow<T extends { id: string | number }>({
       cancelled = true;
     };
   }, [endpoint]);
-
-  // A plain vertical mouse wheel does nothing on an overflow-x row by
-  // default (only a trackpad's horizontal gesture, a touch swipe, or
-  // dragging the scrollbar does) — redirecting vertical wheel delta here
-  // is what makes "just scroll over the cards" move them on a normal
-  // mouse. Touch keeps its native scroll untouched (this never fires for
-  // a touch-originated gesture).
-  function onWheel(e: WheelEvent<HTMLDivElement>) {
-    if (!scrollerRef.current) return;
-    if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return; // already horizontal (trackpad) — let it through natively
-    scrollerRef.current.scrollLeft += e.deltaY;
-    e.preventDefault();
-  }
 
   if (items !== null && items.length === 0) return null;
 
@@ -61,14 +47,9 @@ export default function HomeRow<T extends { id: string | number }>({
           View all
         </Link>
       </div>
-      <div
-        ref={scrollerRef}
-        onWheel={onWheel}
-        className="mt-3 flex gap-3.5 overflow-x-auto pb-2"
-        style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch", touchAction: "pan-x" }}
-      >
+      <div className="mt-3 flex flex-wrap gap-3.5">
         {items === null
-          ? Array.from({ length: 4 }).map((_, i) => (
+          ? Array.from({ length: 6 }).map((_, i) => (
               <div key={i} className="aspect-[4/5] w-44 shrink-0 animate-pulse rounded-2xl bg-surface-2" />
             ))
           : items.map((item) => <div key={item.id}>{renderItem(item)}</div>)}
