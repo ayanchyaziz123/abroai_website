@@ -25,7 +25,7 @@ export default function HomeRow<T extends { id: string | number }>({
       .then((data) => {
         if (cancelled) return;
         const results = (data as { results?: T[] })?.results ?? (data as T[]);
-        setItems(Array.isArray(results) ? results.slice(0, 6) : []);
+        setItems(Array.isArray(results) ? results.slice(0, 5) : []);
       })
       .catch(() => {
         if (!cancelled) setItems([]);
@@ -49,7 +49,7 @@ export default function HomeRow<T extends { id: string | number }>({
       </div>
       <div className="mt-3 flex flex-wrap gap-3.5">
         {items === null
-          ? Array.from({ length: 6 }).map((_, i) => (
+          ? Array.from({ length: 5 }).map((_, i) => (
               <div key={i} className="aspect-[4/5] w-44 shrink-0 animate-pulse rounded-2xl bg-surface-2" />
             ))
           : items.map((item) => <div key={item.id}>{renderItem(item)}</div>)}
