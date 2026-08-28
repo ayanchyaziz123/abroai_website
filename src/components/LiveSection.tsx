@@ -20,10 +20,10 @@ export default function LiveSection() {
 
   function submitAsk(e?: FormEvent) {
     e?.preventDefault();
-    // Full AI Assistant conversations (the Groq-backed chat) live in the
-    // app — this box is a real, working search over live listings on the
-    // web, and hands off to the app for the conversational version.
-    if (query.trim()) router.push(`/browse?type=job&q=${encodeURIComponent(query.trim())}`);
+    // Same Groq-backed AI Assistant the app uses (/ai/chat/) — requires
+    // login same as the app does, so signed-out visitors land on /login
+    // first (RequireAuth on /ai) and come back here after.
+    if (query.trim()) router.push(`/ai?q=${encodeURIComponent(query.trim())}`);
   }
 
   const jobCfg = LISTING_TYPES.find((t) => t.key === "job")!;
@@ -70,7 +70,7 @@ export default function LiveSection() {
               key={s}
               onClick={() => {
                 setQuery(s);
-                router.push(`/browse?type=job&q=${encodeURIComponent(s)}`);
+                router.push(`/ai?q=${encodeURIComponent(s)}`);
               }}
               className="rounded-full bg-surface-2 px-3.5 py-1.5 text-[12px] font-medium text-ink-dim transition hover:bg-accent-dim hover:text-accent"
             >
