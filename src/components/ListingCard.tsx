@@ -21,7 +21,7 @@ export default function ListingCard({ item, cfg }: { item: ListingItem; cfg: Lis
   return (
     <Link
       href={`/listing?type=${cfg.key}&id=${item.id}`}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface transition hover:shadow-md"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface-2 transition hover:shadow-md"
     >
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface-2">
         {item.image_url ? (

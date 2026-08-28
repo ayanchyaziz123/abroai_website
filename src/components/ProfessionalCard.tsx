@@ -16,7 +16,7 @@ export default function ProfessionalCard({ item }: { item: ProfessionalItem }) {
   return (
     <Link
       href={`/professional?type=${item.professional_type}&id=${item.id}`}
-      className="group flex w-44 shrink-0 flex-col overflow-hidden rounded-2xl border border-line bg-surface transition hover:shadow-md"
+      className="group flex w-44 shrink-0 flex-col overflow-hidden rounded-2xl border border-line bg-surface-2 transition hover:shadow-md"
     >
       <div className="relative aspect-square w-full overflow-hidden bg-surface-2">
         {item.image_url ? (
