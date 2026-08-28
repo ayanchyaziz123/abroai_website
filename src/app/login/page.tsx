@@ -54,7 +54,12 @@ export default function LoginPage() {
           </label>
 
           <label className="flex flex-col gap-1.5">
-            <span className="text-[12.5px] font-medium text-ink-dim">Password</span>
+            <div className="flex items-center justify-between">
+              <span className="text-[12.5px] font-medium text-ink-dim">Password</span>
+              <Link href="/forgot-password" className="text-[12px] font-medium text-accent hover:underline">
+                Forgot password?
+              </Link>
+            </div>
             <input
               type="password"
               required
