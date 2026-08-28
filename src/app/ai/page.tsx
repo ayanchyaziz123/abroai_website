@@ -4,7 +4,6 @@ import { useEffect, useRef, useState, Suspense, FormEvent } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import RequireAuth from "@/components/RequireAuth";
 import { api, ApiError } from "@/lib/api";
 
@@ -132,20 +131,26 @@ function AiChatContent() {
   const visible = messages.filter((m) => !m.greeting || messages.length === 1);
 
   return (
-    <div className="flex min-h-full flex-col bg-ground">
+    <div className="min-h-full bg-ground">
       <Nav />
-      <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col px-6 py-8">
-        <div className="flex items-center justify-between">
+      <main className="mx-auto flex w-full max-w-2xl flex-col px-6 pt-6 pb-10">
+        <div className="flex items-center justify-between overflow-hidden rounded-t-3xl border border-b-0 border-line bg-surface px-5 py-4">
           <div className="flex items-center gap-2">
-            <span className="text-[15px]">✨</span>
-            <h1 className="font-display text-xl font-semibold text-ink">Abrofy AI Assistant</h1>
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-dim text-[15px]">✨</span>
+            <div>
+              <h1 className="font-display text-[15px] font-semibold leading-tight text-ink">Abrofy AI Assistant</h1>
+              <p className="text-[11.5px] text-ink-faint">Same assistant as the app</p>
+            </div>
           </div>
           <button onClick={onNewChat} className="text-[12.5px] font-medium text-accent hover:underline">
             New chat
           </button>
         </div>
 
-        <div className="mt-6 flex flex-1 flex-col gap-4">
+        <div
+          className="flex flex-col gap-4 overflow-y-auto border border-line bg-surface px-5 py-5"
+          style={{ height: "60vh" }}
+        >
           {visible.map((m) => (
             <div key={m.id} className={`flex flex-col ${m.role === "user" ? "items-end" : "items-start"}`}>
               <div
@@ -210,12 +215,15 @@ function AiChatContent() {
           <div ref={bottomRef} />
         </div>
 
-        <form onSubmit={onSubmit} className="sticky bottom-6 mt-6 flex items-center gap-2 rounded-full border border-line bg-surface p-1.5 pl-4 shadow-sm">
+        <form
+          onSubmit={onSubmit}
+          className="flex items-center gap-2 rounded-b-3xl border border-t-0 border-line bg-surface px-4 py-4"
+        >
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask about visas, jobs, housing, or anything…"
-            className="min-w-0 flex-1 bg-transparent text-[14px] text-ink outline-none placeholder:text-ink-faint"
+            className="min-w-0 flex-1 rounded-full border border-line bg-ground px-4 py-2.5 text-[14px] text-ink outline-none focus:border-accent"
           />
           <button
             type="submit"
@@ -226,7 +234,6 @@ function AiChatContent() {
           </button>
         </form>
       </main>
-      <Footer />
     </div>
   );
 }
