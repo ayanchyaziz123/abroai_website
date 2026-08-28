@@ -86,7 +86,7 @@ export default function LiveSection() {
             endpoint="/jobs/"
             viewAllHref="/browse?type=job"
             renderItem={(item) => (
-              <div className="w-44 shrink-0">
+              <div className="w-60 shrink-0">
                 <ListingCard item={item} cfg={jobCfg} />
               </div>
             )}
@@ -97,7 +97,7 @@ export default function LiveSection() {
             endpoint="/housing/"
             viewAllHref="/browse?type=housing"
             renderItem={(item) => (
-              <div className="w-44 shrink-0">
+              <div className="w-60 shrink-0">
                 <ListingCard item={item} cfg={housingCfg} />
               </div>
             )}
@@ -107,14 +107,14 @@ export default function LiveSection() {
             emoji="⚖️"
             endpoint="/professionals/?type=attorney"
             viewAllHref="/professionals?type=attorney"
-            renderItem={(item) => <ProfessionalCard item={item} />}
+            renderItem={(item) => <ProfessionalCard item={item} widthClass="w-60" />}
           />
           <HomeRow<ProfessionalItem>
             title="Doctors"
             emoji="🩺"
             endpoint="/professionals/?type=doctor"
             viewAllHref="/professionals?type=doctor"
-            renderItem={(item) => <ProfessionalCard item={item} />}
+            renderItem={(item) => <ProfessionalCard item={item} widthClass="w-60" />}
           />
           <HomeRow<ListingItem>
             title="Marketplace"
@@ -122,7 +122,7 @@ export default function LiveSection() {
             endpoint="/marketplace/"
             viewAllHref="/browse?type=marketplace"
             renderItem={(item) => (
-              <div className="w-44 shrink-0">
+              <div className="w-60 shrink-0">
                 <ListingCard item={item} cfg={marketCfg} />
               </div>
             )}
