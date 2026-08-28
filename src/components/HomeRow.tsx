@@ -91,7 +91,7 @@ export default function HomeRow<T extends { id: string | number }>({
       >
         {items === null
           ? Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="aspect-[4/5] w-60 shrink-0 animate-pulse rounded-2xl bg-surface-2" />
+              <div key={i} className="aspect-[4/5] w-44 shrink-0 animate-pulse rounded-2xl bg-surface-2" />
             ))
           : items.map((item) => <div key={item.id}>{renderItem(item)}</div>)}
       </div>
