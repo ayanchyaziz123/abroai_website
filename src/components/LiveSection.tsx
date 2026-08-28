@@ -107,14 +107,22 @@ export default function LiveSection() {
             emoji="⚖️"
             endpoint="/professionals/?type=attorney"
             viewAllHref="/professionals?type=attorney"
-            renderItem={(item) => <ProfessionalCard item={item} />}
+            renderItem={(item) => (
+              <div className="w-44 shrink-0">
+                <ProfessionalCard item={item} />
+              </div>
+            )}
           />
           <HomeRow<ProfessionalItem>
             title="Doctors"
             emoji="🩺"
             endpoint="/professionals/?type=doctor"
             viewAllHref="/professionals?type=doctor"
-            renderItem={(item) => <ProfessionalCard item={item} />}
+            renderItem={(item) => (
+              <div className="w-44 shrink-0">
+                <ProfessionalCard item={item} />
+              </div>
+            )}
           />
           <HomeRow<ListingItem>
             title="Marketplace"
