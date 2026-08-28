@@ -109,7 +109,7 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={busy}
-              className="mt-2 rounded-full bg-ink px-5 py-3 text-[14px] font-semibold text-white transition hover:bg-accent disabled:opacity-60"
+              className="mt-2 rounded-full bg-accent px-5 py-3 text-[14px] font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
             >
               {busy ? "Sending…" : "Send verification code"}
             </button>
@@ -134,7 +134,7 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={busy}
-              className="mt-2 rounded-full bg-ink px-5 py-3 text-[14px] font-semibold text-white transition hover:bg-accent disabled:opacity-60"
+              className="mt-2 rounded-full bg-accent px-5 py-3 text-[14px] font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
             >
               {busy ? "Verifying…" : "Verify"}
             </button>
@@ -197,7 +197,7 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={busy}
-              className="mt-2 rounded-full bg-ink px-5 py-3 text-[14px] font-semibold text-white transition hover:bg-accent disabled:opacity-60"
+              className="mt-2 rounded-full bg-accent px-5 py-3 text-[14px] font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
             >
               {busy ? "Creating account…" : "Create account"}
             </button>

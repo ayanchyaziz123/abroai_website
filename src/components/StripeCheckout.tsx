@@ -42,7 +42,7 @@ function PayForm({ onSuccess, busyLabel }: { onSuccess: (paymentIntentId: string
         type="button"
         onClick={onPay}
         disabled={paying}
-        className="rounded-full bg-ink px-5 py-3 text-[14px] font-semibold text-white transition hover:bg-accent disabled:opacity-60"
+        className="rounded-full bg-accent px-5 py-3 text-[14px] font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
       >
         {paying ? busyLabel : "Pay & continue"}
       </button>

@@ -59,7 +59,7 @@ export default function LiveSection() {
           <button
             type="submit"
             disabled={!query.trim()}
-            className="shrink-0 rounded-full bg-ink px-4 py-2.5 text-[13px] font-semibold text-white transition hover:bg-accent disabled:opacity-40"
+            className="shrink-0 rounded-full bg-accent px-4 py-2.5 text-[13px] font-semibold text-white transition hover:opacity-90 disabled:opacity-40"
           >
             Search
           </button>

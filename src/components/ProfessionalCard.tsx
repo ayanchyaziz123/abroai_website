@@ -32,7 +32,7 @@ export default function ProfessionalCard({ item }: { item: ProfessionalItem }) {
           </div>
         )}
         {item.is_verified && (
-          <span className="absolute left-2 top-2 rounded-full bg-ink/85 px-2 py-0.5 text-[10px] font-semibold text-white backdrop-blur">
+          <span className="absolute left-2 top-2 rounded-full bg-black/70 px-2 py-0.5 text-[10px] font-semibold text-white backdrop-blur">
             ✓ Verified
           </span>
         )}

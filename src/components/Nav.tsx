@@ -42,7 +42,7 @@ export default function Nav() {
 
         <a
           href="https://expo.dev/artifacts/eas/TltzRBCDoEzGhPttLJG8v6sGDpjVJunw0X0e6cWAtxE.apk"
-          className="rounded-full bg-ink px-5 py-2.5 text-[13px] font-semibold text-white transition hover:bg-accent"
+          className="rounded-full bg-accent px-5 py-2.5 text-[13px] font-semibold text-white transition hover:opacity-90"
         >
           Get the app
         </a>

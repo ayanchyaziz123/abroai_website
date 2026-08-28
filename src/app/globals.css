@@ -1,34 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  /* Warm, quiet neutrals — no paper texture, no board. A plain warm
-     off-white reads calmer and more human than a stark white or a
-     textured "craft" surface. */
-  --ground: #fdfbf7;
+  /* Same palette as the mobile app's light theme (src/theme/colors.js
+     lightColors) — the web client of the same product should look like the
+     same product, not a separate "marketing site" identity. */
+  --ground: #f5f7ff;
   --surface: #ffffff;
-  --surface-2: #f4efe4;
-  --ink: #241f1a;
-  --ink-dim: #5c5248;
-  --ink-faint: #948a7d;
-  --line: rgba(36, 31, 26, 0.1);
+  --surface-2: #eef1fa;
+  --ink: #12142a;
+  --ink-dim: rgba(18, 20, 42, 0.65);
+  --ink-faint: rgba(18, 20, 42, 0.42);
+  --line: rgba(18, 20, 42, 0.14);
 
-  /* Deep pine green — chosen instead of the warm-orange-on-cream combo
-     for a calmer, more trustworthy "community" register rather than an
-     energetic "startup" one. Gold is the secondary warm accent, used for
-     small highlights (flags, ratings, the verified badge). */
-  --accent: #1f6e52;
-  --accent-soft: #3f9174;
-  --accent-dim: rgba(31, 110, 82, 0.1);
-  --gold: #c98a3a;
-  --gold-dim: rgba(201, 138, 58, 0.14);
+  /* Brand purple — the app's actual primary accent (buttons, active plan
+     card, "Premium" badge). Gold is the secondary warm accent. */
+  --accent: #7c3aed;
+  --accent-soft: #9b6bf0;
+  --accent-dim: rgba(124, 58, 237, 0.1);
+  --gold: #f4a227;
+  --gold-dim: rgba(244, 162, 39, 0.12);
 
-  /* Per-category colors — match the app's own listing-type palette so the
-     marketing site visually agrees with the product. */
-  --cat-job: #2f6fd6;
-  --cat-housing: #c97e0f;
-  --cat-market: #1a9c76;
+  /* Per-category colors — the app's own BRAND palette (colors.js), not an
+     invented web-only set. */
+  --cat-job: #3b8bf7;
+  --cat-housing: #f4a227;
+  --cat-market: #28d99e;
   --cat-ride: #7c3aed;
-  --cat-event: #d1414a;
+  --cat-event: #e85555;
 }
 
 @theme inline {
@@ -58,9 +56,9 @@
 }
 
 :root {
-  /* Without this, a browser/OS in dark mode can silently re-darken parts
-     of the page (form controls, scrollbars, and on some engines more)
-     since nothing here ever declares this is a light-only design. */
+  /* Matches the mobile app's light theme — declared explicitly so a
+     browser/OS in dark mode doesn't silently re-darken form controls or
+     scrollbars against this light page. */
   color-scheme: light;
 }
 

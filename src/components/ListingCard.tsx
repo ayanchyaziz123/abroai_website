@@ -37,7 +37,7 @@ export default function ListingCard({ item, cfg }: { item: ListingItem; cfg: Lis
           </div>
         )}
         {boosted && (
-          <span className="absolute left-2.5 top-2.5 rounded-full bg-ink/85 px-2.5 py-1 text-[10.5px] font-semibold text-white backdrop-blur">
+          <span className="absolute left-2.5 top-2.5 rounded-full bg-black/70 px-2.5 py-1 text-[10.5px] font-semibold text-white backdrop-blur">
             Featured
           </span>
         )}
