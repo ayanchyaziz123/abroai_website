@@ -23,7 +23,7 @@ export default function Nav() {
 
         {!loading && user && (
           <Link href="/post" className="text-[13px] font-medium text-ink-dim transition hover:text-ink">
-            Post a listing
+            Create
           </Link>
         )}
 
