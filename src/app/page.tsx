@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import LiveSection from "@/components/LiveSection";
 
 const ANDROID_APK_URL =
   "https://expo.dev/artifacts/eas/TltzRBCDoEzGhPttLJG8v6sGDpjVJunw0X0e6cWAtxE.apk";
@@ -130,6 +131,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <LiveSection />
 
       {/* ── Sound familiar? ──────────────────────────────────────────── */}
       <section className="bg-surface-2">
