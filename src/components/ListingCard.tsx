@@ -13,17 +13,17 @@ export type ListingItem = {
   company?: string;
 };
 
+// Matches the mobile app's HomeScreen grid card (gridCard/gridImgWrap/
+// gridInfo) — no card box, no border, no fill. Just a rounded image sitting
+// on the page, with plain title/subtitle text underneath.
 export default function ListingCard({ item, cfg }: { item: ListingItem; cfg: ListingTypeConfig }) {
   const boosted = item.is_hot || item.is_featured;
   const subtitle =
     cfg.key === "job" ? item.company : cfg.hasPrice && item.price != null ? `$${item.price}` : null;
 
   return (
-    <Link
-      href={`/listing?type=${cfg.key}&id=${item.id}`}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface-2 transition hover:shadow-md"
-    >
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface-2">
+    <Link href={`/listing?type=${cfg.key}&id=${item.id}`} className="group flex flex-col">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-surface-2">
         {item.image_url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -42,10 +42,10 @@ export default function ListingCard({ item, cfg }: { item: ListingItem; cfg: Lis
           </span>
         )}
       </div>
-      <div className="flex flex-1 flex-col gap-1 p-3.5">
-        <h3 className="line-clamp-2 text-[14px] font-semibold leading-snug text-ink">{item.title}</h3>
-        {subtitle && <p className="text-[12.5px] text-ink-dim">{subtitle}</p>}
-        {item.location && <p className="text-[11.5px] text-ink-faint">{item.location}</p>}
+      <div className="flex flex-col gap-0.5 pt-2">
+        <h3 className="line-clamp-1 text-[13px] font-semibold leading-snug text-ink">{item.title}</h3>
+        {subtitle && <p className="line-clamp-1 text-[12px] text-ink-dim">{subtitle}</p>}
+        {item.location && <p className="line-clamp-1 text-[11px] text-ink-faint">{item.location}</p>}
       </div>
     </Link>
   );

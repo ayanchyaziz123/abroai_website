@@ -11,14 +11,13 @@ export type ProfessionalItem = {
   plan?: string;
 };
 
+// Matches the mobile app's HomeScreen grid card — no card box, no border,
+// no fill. Just a rounded image/avatar with plain text underneath.
 export default function ProfessionalCard({ item }: { item: ProfessionalItem }) {
   const accent = item.professional_type === "attorney" ? "var(--cat-job)" : "var(--accent)";
   return (
-    <Link
-      href={`/professional?type=${item.professional_type}&id=${item.id}`}
-      className="group flex w-44 shrink-0 flex-col overflow-hidden rounded-2xl border border-line bg-surface-2 transition hover:shadow-md"
-    >
-      <div className="relative aspect-square w-full overflow-hidden bg-surface-2">
+    <Link href={`/professional?type=${item.professional_type}&id=${item.id}`} className="group flex w-44 shrink-0 flex-col">
+      <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-surface-2">
         {item.image_url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -37,9 +36,9 @@ export default function ProfessionalCard({ item }: { item: ProfessionalItem }) {
           </span>
         )}
       </div>
-      <div className="flex flex-col gap-0.5 p-3">
-        <h3 className="line-clamp-1 text-[13.5px] font-semibold text-ink">{item.name}</h3>
-        {item.organization && <p className="line-clamp-1 text-[11.5px] text-ink-dim">{item.organization}</p>}
+      <div className="flex flex-col gap-0.5 pt-2">
+        <h3 className="line-clamp-1 text-[13px] font-semibold text-ink">{item.name}</h3>
+        {item.organization && <p className="line-clamp-1 text-[12px] text-ink-dim">{item.organization}</p>}
       </div>
     </Link>
   );
