@@ -141,7 +141,7 @@ function DetailContent() {
               {!isOwner && (
                 <p className="mt-2 text-[12.5px] text-ink-faint">
                   Message them in the{" "}
-                  <a href="/#download" className="font-medium text-accent hover:underline">
+                  <a href="https://expo.dev/artifacts/eas/TltzRBCDoEzGhPttLJG8v6sGDpjVJunw0X0e6cWAtxE.apk" className="font-medium text-accent hover:underline">
                     Abrofy app
                   </a>
                   .
