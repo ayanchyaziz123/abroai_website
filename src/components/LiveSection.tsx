@@ -85,55 +85,35 @@ export default function LiveSection() {
             emoji="💼"
             endpoint="/jobs/"
             viewAllHref="/browse?type=job"
-            renderItem={(item) => (
-              <div className="w-44 shrink-0">
-                <ListingCard item={item} cfg={jobCfg} />
-              </div>
-            )}
+            renderItem={(item) => <ListingCard item={item} cfg={jobCfg} />}
           />
           <HomeRow<ListingItem>
             title="Housing"
             emoji="🏠"
             endpoint="/housing/"
             viewAllHref="/browse?type=housing"
-            renderItem={(item) => (
-              <div className="w-44 shrink-0">
-                <ListingCard item={item} cfg={housingCfg} />
-              </div>
-            )}
+            renderItem={(item) => <ListingCard item={item} cfg={housingCfg} />}
           />
           <HomeRow<ProfessionalItem>
             title="Lawyers"
             emoji="⚖️"
             endpoint="/professionals/?type=attorney"
             viewAllHref="/professionals?type=attorney"
-            renderItem={(item) => (
-              <div className="w-44 shrink-0">
-                <ProfessionalCard item={item} />
-              </div>
-            )}
+            renderItem={(item) => <ProfessionalCard item={item} />}
           />
           <HomeRow<ProfessionalItem>
             title="Doctors"
             emoji="🩺"
             endpoint="/professionals/?type=doctor"
             viewAllHref="/professionals?type=doctor"
-            renderItem={(item) => (
-              <div className="w-44 shrink-0">
-                <ProfessionalCard item={item} />
-              </div>
-            )}
+            renderItem={(item) => <ProfessionalCard item={item} />}
           />
           <HomeRow<ListingItem>
             title="Marketplace"
             emoji="🛍️"
             endpoint="/marketplace/"
             viewAllHref="/browse?type=marketplace"
-            renderItem={(item) => (
-              <div className="w-44 shrink-0">
-                <ListingCard item={item} cfg={marketCfg} />
-              </div>
-            )}
+            renderItem={(item) => <ListingCard item={item} cfg={marketCfg} />}
           />
         </div>
       </div>

@@ -16,7 +16,7 @@ export type ProfessionalItem = {
 export default function ProfessionalCard({ item }: { item: ProfessionalItem }) {
   const accent = item.professional_type === "attorney" ? "var(--cat-job)" : "var(--accent)";
   return (
-    <Link href={`/professional?type=${item.professional_type}&id=${item.id}`} className="group flex flex-col">
+    <Link href={`/professional?type=${item.professional_type}&id=${item.id}`} className="group flex w-44 shrink-0 flex-col">
       <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-surface-2">
         {item.image_url ? (
           // eslint-disable-next-line @next/next/no-img-element

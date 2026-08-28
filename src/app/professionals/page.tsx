@@ -62,9 +62,9 @@ function ProfessionalsContent() {
 
         <div className="mt-8">
           {items === null && (
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            <div className="flex flex-wrap gap-4">
               {Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} className="aspect-square animate-pulse rounded-2xl bg-surface-2" />
+                <div key={i} className="aspect-square w-44 shrink-0 animate-pulse rounded-2xl bg-surface-2" />
               ))}
             </div>
           )}
@@ -72,7 +72,7 @@ function ProfessionalsContent() {
             <p className="py-16 text-center text-[14px] text-ink-faint">No {type === "attorney" ? "lawyers" : "doctors"} listed yet.</p>
           )}
           {items !== null && items.length > 0 && (
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            <div className="flex flex-wrap gap-4">
               {items.map((item) => (
                 <ProfessionalCard key={item.id} item={item} />
               ))}

@@ -22,7 +22,7 @@ export default function ListingCard({ item, cfg }: { item: ListingItem; cfg: Lis
     cfg.key === "job" ? item.company : cfg.hasPrice && item.price != null ? `$${item.price}` : null;
 
   return (
-    <Link href={`/listing?type=${cfg.key}&id=${item.id}`} className="group flex flex-col">
+    <Link href={`/listing?type=${cfg.key}&id=${item.id}`} className="group flex w-44 shrink-0 flex-col">
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-surface-2">
         {item.image_url ? (
           // eslint-disable-next-line @next/next/no-img-element
