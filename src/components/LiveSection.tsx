@@ -32,22 +32,22 @@ export default function LiveSection() {
 
   return (
     <section className="bg-ground">
-      <div className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+      <div className="mx-auto max-w-5xl px-6 py-8 sm:py-10">
         <div className="mx-auto max-w-xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-accent-dim px-3.5 py-1.5 text-[12.5px] font-semibold text-accent">
             Live on Abrofy right now
           </span>
-          <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink text-balance">
+          <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink text-balance">
             Not a mockup — real listings, real people
           </h2>
-          <p className="mt-3 text-[15px] text-ink-dim">
+          <p className="mt-2 text-[15px] text-ink-dim">
             Everything below is pulled live from the same community the app runs on.
           </p>
         </div>
 
         <form
           onSubmit={submitAsk}
-          className="mx-auto mt-8 flex max-w-xl items-center gap-2 rounded-full border border-line bg-surface p-1.5 pl-4 shadow-sm"
+          className="mx-auto mt-5 flex max-w-xl items-center gap-2 rounded-full border border-line bg-surface p-1.5 pl-4 shadow-sm"
         >
           <span className="text-[15px]">✨</span>
           <input
@@ -79,7 +79,7 @@ export default function LiveSection() {
           ))}
         </div>
 
-        <div className="mt-14 flex flex-col gap-12">
+        <div className="mt-8 flex flex-col gap-7">
           <HomeRow<ListingItem>
             title="Jobs"
             emoji="💼"

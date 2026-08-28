@@ -8,7 +8,7 @@ export default function Nav() {
   const { user, loading, logout } = useAuth();
 
   return (
-    <header className="mx-auto flex max-w-5xl items-center justify-between px-6 py-7">
+    <header className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
       <Link href="/" className="flex items-center gap-2.5">
         <div className="h-8 w-8 overflow-hidden rounded-xl">
           <Image src="/app-icon.png" alt="" width={32} height={32} />
