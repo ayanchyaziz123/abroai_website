@@ -18,7 +18,11 @@ export default function Nav() {
 
       <nav className="flex items-center gap-5">
         <Link href="/browse" className="text-[13px] font-medium text-ink-dim transition hover:text-ink">
-          Browse
+          Listings
+        </Link>
+
+        <Link href="/professionals" className="text-[13px] font-medium text-ink-dim transition hover:text-ink">
+          Professionals
         </Link>
 
         {!loading && user && (
