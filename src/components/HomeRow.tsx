@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, ReactNode, WheelEvent, PointerEvent } from "react";
+import { useEffect, useRef, useState, ReactNode, WheelEvent } from "react";
 import Link from "next/link";
 import { api } from "@/lib/api";
 
@@ -19,11 +19,6 @@ export default function HomeRow<T extends { id: string | number }>({
 }) {
   const [items, setItems] = useState<T[] | null>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
-  const drag = useRef<{ startX: number; startScrollLeft: number; dragging: boolean }>({
-    startX: 0,
-    startScrollLeft: 0,
-    dragging: false,
-  });
 
   useEffect(() => {
     let cancelled = false;
@@ -42,29 +37,16 @@ export default function HomeRow<T extends { id: string | number }>({
   }, [endpoint]);
 
   // A plain vertical mouse wheel does nothing on an overflow-x row by
-  // default (only a trackpad's horizontal gesture or dragging the
-  // scrollbar does) — redirecting vertical wheel delta here is what makes
-  // "just scroll over the cards" actually move them on a normal mouse.
+  // default (only a trackpad's horizontal gesture, a touch swipe, or
+  // dragging the scrollbar does) — redirecting vertical wheel delta here
+  // is what makes "just scroll over the cards" move them on a normal
+  // mouse. Touch keeps its native scroll untouched (this never fires for
+  // a touch-originated gesture).
   function onWheel(e: WheelEvent<HTMLDivElement>) {
     if (!scrollerRef.current) return;
-    if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return; // already horizontal (trackpad) — let it through
+    if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return; // already horizontal (trackpad) — let it through natively
     scrollerRef.current.scrollLeft += e.deltaY;
     e.preventDefault();
-  }
-
-  // Click-and-drag scrolling for mouse users — touch already scrolls
-  // natively, this just gives a mouse the same "grab and slide" behavior.
-  function onPointerDown(e: PointerEvent<HTMLDivElement>) {
-    if (e.pointerType === "touch" || !scrollerRef.current) return;
-    drag.current = { startX: e.clientX, startScrollLeft: scrollerRef.current.scrollLeft, dragging: true };
-    scrollerRef.current.setPointerCapture(e.pointerId);
-  }
-  function onPointerMove(e: PointerEvent<HTMLDivElement>) {
-    if (!drag.current.dragging || !scrollerRef.current) return;
-    scrollerRef.current.scrollLeft = drag.current.startScrollLeft - (e.clientX - drag.current.startX);
-  }
-  function onPointerUp() {
-    drag.current.dragging = false;
   }
 
   if (items !== null && items.length === 0) return null;
@@ -82,12 +64,8 @@ export default function HomeRow<T extends { id: string | number }>({
       <div
         ref={scrollerRef}
         onWheel={onWheel}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerLeave={onPointerUp}
-        className="mt-3 flex cursor-grab gap-3.5 overflow-x-auto pb-2 active:cursor-grabbing"
-        style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}
+        className="mt-3 flex gap-3.5 overflow-x-auto pb-2"
+        style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch", touchAction: "pan-x" }}
       >
         {items === null
           ? Array.from({ length: 4 }).map((_, i) => (
